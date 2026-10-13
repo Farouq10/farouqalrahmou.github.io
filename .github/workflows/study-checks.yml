@@ -1,4 +1,4 @@
-name: Study scheduler tests
+name: Study queue tests
 on:
   push:
     paths:
@@ -25,5 +25,5 @@ jobs:
           node-version: "22"
       - run: node --test study/tests/*.test.mjs
       - run: node --check study/app.mjs
-      - run: node --check study/scheduler.mjs
-      - run: node --check study/storage.mjs
+      - run: node --check study/queue.mjs
+      - run: node --check study/published-deck.mjs

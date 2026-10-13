@@ -1,10 +1,4 @@
-/**
- * THE ONLY AUTHORITATIVE DECK CONTENT.
- * Edit this file in GitHub to change questions/answers for ALL visitors.
- * Keep card IDs stable when only fixing wording; changing an answer resets
- * the local scheduling state for that card automatically.
- * Review histories remain private to each visitor's browser.
- */
+/** One read-only shared deck. Edit this file to publish cards for all visitors. */
 export const PUBLISHED_DECK = Object.freeze({
   id: "published-cold-war-1945-55",
   name: "Cold War: 1945–55",
@@ -37,52 +31,3 @@ export const PUBLISHED_DECK = Object.freeze({
   ])
 });
 
-const PUBLIC_DATE = Date.UTC(2026, 9, 13);
-
-/**
- * Overlay the code-defined deck onto browser-local state.
- * Legacy user-created decks and their history remain preserved in IndexedDB
- * and JSON backups but cannot be accessed/edited through this page.
- * A tampered/imported backup cannot alter published card content.
- */
-export function syncPublishedDeck(state) {
-  if (!state || !Array.isArray(state.decks) || !Array.isArray(state.cards)) {
-    throw new TypeError("Invalid study state");
-  }
-  if (PUBLISHED_DECK.cards.length > 20000) throw new Error("Published deck too large");
-  const deck = PUBLISHED_DECK;
-  const seen = new Set();
-  const originals = new Map(state.cards.filter(c => c.deckId === deck.id).map(c => [c.id,c]));
-  const canonical = deck.cards.map((item, idx) => {
-    if (!/^[a-zA-Z0-9_-]{1,100}$/.test(item.id) || seen.has(item.id)) {
-      throw new Error("Card IDs must be unique, stable and URL-safe");
-    }
-    seen.add(item.id);
-    if (!["fact","date","event","significance"].includes(item.focus) ||
-        typeof item.front !== "string" || !item.front.trim() || item.front.length > 500 ||
-        typeof item.back !== "string" || !item.back.trim() || item.back.length > 2000) {
-      throw new Error("Invalid published card: " + item.id);
-    }
-    const previous = originals.get(item.id);
-    const unchanged = previous && previous.front === item.front &&
-      previous.back === item.back && previous.focus === item.focus;
-    const basis = unchanged ? previous : {
-      reps: 0, lapses: 0, dueAt: 0
-    };
-    return {
-      ...basis, id: item.id, deckId: deck.id,
-      front: item.front, back: item.back, focus: item.focus,
-      createdAt: previous?.createdAt ?? PUBLIC_DATE + idx
-    };
-  });
-  state.decks = [
-    ...state.decks.filter(item => item.id !== deck.id),
-    {id:deck.id, name:deck.name, examDate:deck.examDate, createdAt:PUBLIC_DATE}
-  ];
-  state.cards = [
-    ...state.cards.filter(card => card.deckId !== deck.id),
-    ...canonical
-  ];
-  state.settings.selectedDeck = deck.id;
-  return state;
-}
