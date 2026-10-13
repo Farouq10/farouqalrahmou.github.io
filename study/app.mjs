@@ -4,13 +4,119 @@ import {
   currentCard, applyRating, remainingMistakes
 } from "./queue.mjs";
 import { loadProgress, saveProgress } from "./persistence.mjs";
+import { cloudIsConfigured, openCloud } from "./cloud.mjs";
+import { decideFirstSync } from "./cloud-policy.mjs";
 
-// No Firebase, account, uploads, deck creator, scheduler settings or analytics.
-// Published flashcards come exclusively from versioned code in GitHub.
-// Each browser saves only its independent queue; previous IndexedDB data remains untouched.
+// Firebase is an optional private sync layer; all practice still saves locally.
+// No uploaded flashcard text or site redesign is required.
 const $=id=>document.getElementById(id);
 const deck=validateDeck(PUBLISHED_DECK);
 let session, flipped=false, busy=false;
+let cloudAPI=null,cloudUid=null,cloudVersion=null,cloudReady=false;
+let cloudQueue=Promise.resolve(), pendingDecision=null;
+const BACKUP_KEY="study-cloud-safety-copy";
+function cloudStatus(message){ $("cloud-status").textContent=message; }
+function keepSafetyCopy(snapshot){
+  // Preserve the losing copy before any initial sync conflict is resolved.
+  localStorage.setItem(BACKUP_KEY,JSON.stringify(snapshot));
+}
+function cloudLater(snapshot) {
+  if(!cloudReady||!cloudAPI||!cloudUid)return;
+  const uid=cloudUid;
+  cloudStatus("Saving to cloud…");
+  cloudQueue=cloudQueue.then(async()=>{
+    if(!cloudReady||uid!==cloudUid)return;
+    cloudVersion=await cloudAPI.push(uid,snapshot,cloudVersion);
+    cloudStatus("Saved to cloud");
+  }).catch(error=>{
+    cloudReady=false;
+    cloudStatus("Cloud sync paused: "+error.message+
+      ". Local saving still works. Reload to reconcile.");
+  });
+}
+async function useCloud() {
+  if(!pendingDecision||busy)return;
+  busy=true;
+  try{
+    const decision=pendingDecision;
+    keepSafetyCopy(session);
+    await saveProgress(decision.session);
+    session=decision.session;flipped=false;
+    cloudVersion=decision.version;cloudReady=true;
+    pendingDecision=null;$("cloud-conflict").hidden=true;
+    render();cloudStatus("Saved progress loaded from cloud");
+  }catch(error){cloudStatus("Could not load cloud copy: "+error.message);}
+  finally{busy=false;}
+}
+async function useDevice(){
+  if(!pendingDecision||busy)return;
+  busy=true;
+  try{
+    const decision=pendingDecision;
+    keepSafetyCopy(decision.session);
+    cloudVersion=await cloudAPI.push(cloudUid,session,decision.version);
+    cloudReady=true;pendingDecision=null;
+    $("cloud-conflict").hidden=true;
+    cloudStatus("This device's progress saved to cloud");
+  }catch(error){cloudStatus("Could not save this device: "+error.message);}
+  finally{busy=false;}
+}
+async function connectForUser(user){
+  cloudUid=user.uid;cloudReady=false;cloudVersion=null;pendingDecision=null;
+  $("cloud-conflict").hidden=true;
+  $("cloud-button").textContent="Sign out";
+  if(busy) {
+    cloudStatus("Cloud sign-in is ready. Reload when your current review finishes.");
+    return;
+  }
+  busy=true;
+  cloudStatus("Checking cloud progress…");
+  try{
+    const remote=await cloudAPI.read(user.uid);
+    if(cloudUid!==user.uid)return;
+    const choice=decideFirstSync(session,remote,deck);
+    if(choice.action==="invalid")throw new Error(choice.reason);
+    if(choice.action==="conflict"){
+      pendingDecision=choice;
+      $("cloud-conflict").hidden=false;
+      cloudStatus("Different progress was found. Choose which to keep.");
+    }else if(choice.action==="download"){
+      keepSafetyCopy(session);
+      await saveProgress(choice.session);
+      session=choice.session;flipped=false;
+      cloudVersion=choice.version;cloudReady=true;
+      render();cloudStatus("Cloud progress restored");
+    }else if(choice.action==="upload"){
+      cloudVersion=await cloudAPI.push(user.uid,session,choice.version);
+      cloudReady=true;
+      cloudStatus("Progress saved to cloud");
+    }else{
+      cloudVersion=choice.version;cloudReady=true;
+      cloudStatus("Cloud progress is up to date");
+    }
+  }catch(error){
+    cloudReady=false;
+    cloudStatus("Cloud unavailable: "+error.message+". Local progress is safe.");
+  }finally{busy=false;}
+}
+async function initCloud(){
+  if(!cloudIsConfigured()){
+    cloudStatus("Cloud sync is not connected yet.");
+    return;
+  }
+  $("cloud-button").hidden=false;
+  try{
+    cloudAPI=await openCloud();
+    cloudAPI.onAuth(async user=>{
+      if(!user) {
+        cloudUid=null;cloudVersion=null;cloudReady=false;pendingDecision=null;
+        $("cloud-conflict").hidden=true;
+        $("cloud-button").textContent="Sign in to sync";
+        cloudStatus("Not signed in — saved on this browser");
+      }else await connectForUser(user);
+    });
+  }catch(error){cloudStatus("Cloud initialization failed: "+error.message);}
+}
 function status(message){ $("save-message").textContent=message; }
 function showError(message){
   $("error").textContent=message;
@@ -47,6 +153,7 @@ async function rate(id){
     const next=applyRating(session,deck,id);
     const saved=await saveProgress(next);
     session=next;flipped=false;
+    cloudLater(structuredClone(next));
     status(saved.replicas===2?"Progress saved on this browser.":
       "Progress saved in one browser store; cloud sync is not enabled.");
     $("error").hidden=true;
@@ -58,6 +165,15 @@ async function rate(id){
 }
 function bind(){
   $("flip-card").addEventListener("click",flip);
+  $("cloud-button").addEventListener("click",async ()=>{
+    if(!cloudAPI)return;
+    try{
+      if(cloudAPI.user())await cloudAPI.signOut();
+      else await cloudAPI.signIn();
+    }catch(error){cloudStatus("Sign-in failed: "+error.message);}
+  });
+  $("use-cloud").addEventListener("click",useCloud);
+  $("use-device").addEventListener("click",useDevice);
   const row=$("ratings");
   RATINGS.forEach((rating,index)=>{
     const button=document.createElement("button");
@@ -95,6 +211,7 @@ function bind(){
       next.updatedAt=Math.max(Date.now(),session.updatedAt+1);
       await saveProgress(next);
       session=next;flipped=false;render();
+      cloudLater(structuredClone(next));
       status("Progress saved on this browser.");
       $("error").hidden=true;
       $("flip-card").focus();
@@ -119,6 +236,7 @@ async function start(){
     session=restored.session;
     bind();render();
     $("app").hidden=false;
+    void initCloud();
     try{
       const result=await saveProgress(session);
       if(restored.recovered)

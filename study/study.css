@@ -47,3 +47,9 @@ button.rating:active{background:#e3eaf3}
 }
 @media(max-width:390px){.ratings{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){#progress-fill{transition:none}}
+
+.cloud-line{display:flex;gap:12px;align-items:center;margin-top:14px;flex-wrap:wrap;font-size:12px;color:#666}
+.cloud-line button,.cloud-conflict button{background:#fff;border:1px solid #bbb;padding:5px 10px;border-radius:3px;color:#174b84;font:inherit;font-size:12px;cursor:pointer}
+.cloud-conflict{margin-top:12px;border:1px solid #e2d4aa;padding:13px;font-size:13px}
+.cloud-conflict p{margin:0 0 10px}
+.cloud-conflict button{margin-right:8px}

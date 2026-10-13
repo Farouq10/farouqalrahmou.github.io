@@ -49,8 +49,17 @@
           <p>You worked through all the cards and corrected the ones you missed.</p>
           <button type="button" id="again">Study again</button>
         </section>
+        <div class="cloud-line">
+          <button type="button" id="cloud-button" hidden>Sign in to sync</button>
+          <span id="cloud-status" role="status" aria-live="polite">Checking cloud connection…</span>
+        </div>
+        <div id="cloud-conflict" class="cloud-conflict" hidden>
+          <p>Cloud and browser progress differ. Neither copy has been replaced.</p>
+          <button type="button" id="use-cloud">Use cloud progress</button>
+          <button type="button" id="use-device">Use this device</button>
+        </div>
         <p class="notice" id="save-message" role="status" aria-live="polite"></p>
-        <p class="hint">Cards you know leave this session. Mistakes return until you recall them correctly twice. Your position is saved on this browser.</p>
+        <p class="hint">Cards you know leave this session. Mistakes repeat until corrected twice. This browser always saves your position; cloud saving works after Google sign-in and Firebase setup.</p>
       </div>
       <p id="error" role="alert" hidden></p>
     </main>
