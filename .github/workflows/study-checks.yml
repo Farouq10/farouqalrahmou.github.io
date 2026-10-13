@@ -1,0 +1,29 @@
+name: Study scheduler tests
+on:
+  push:
+    paths:
+      - "study/**"
+      - "study.html"
+      - "index.html"
+      - ".github/workflows/study-checks.yml"
+  pull_request:
+    paths:
+      - "study/**"
+      - "study.html"
+      - "index.html"
+      - ".github/workflows/study-checks.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node --test study/tests/*.test.mjs
+      - run: node --check study/app.mjs
+      - run: node --check study/scheduler.mjs
+      - run: node --check study/storage.mjs

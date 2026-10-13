@@ -1,0 +1,61 @@
+:root {color-scheme:light}
+* {box-sizing:border-box}
+body {margin:0;background:#fff;color:#202020;font:16px/1.6 Arial,Helvetica,sans-serif}
+.page {max-width:1050px;margin:0 auto;padding:55px 28px 80px}
+header {border-bottom:1px solid #d8d8d8;padding-bottom:20px}
+h1 {margin:0;font-size:29px;font-weight:600;letter-spacing:-.3px}
+h1 a {color:inherit;text-decoration:none}
+.layout {display:grid;grid-template-columns:150px minmax(0,1fr);gap:48px;padding-top:34px}
+nav {align-self:start;position:sticky;top:24px;display:flex;flex-direction:column;gap:8px;font-size:15px}
+a {color:#174b84;text-underline-offset:2px}
+nav a {text-decoration:none} nav a:hover, nav a[aria-current] {text-decoration:underline}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible {outline:2px solid #174b84;outline-offset:3px}
+main {min-width:0;max-width:700px}
+h2 {font-size:22px;line-height:1.3;margin:0 0 8px} h3 {font-size:17px;margin:0 0 12px}
+p {margin:0 0 15px} .quiet,.hint {color:#666} .small,.hint {font-size:13px}
+.notice {padding:12px 14px;border-left:3px solid #aaa;background:#f8f8f8;font-size:13px}
+.summary {display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 12px}
+.summary span {border:1px solid #dedede;padding:8px 12px;font-size:14px;min-width:100px}
+.summary strong {font-size:18px;font-variant-numeric:tabular-nums}
+.toolbar {display:flex;align-items:center;gap:12px;margin:18px 0}
+.toolbar select {max-width:330px}
+.subnav {display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 20px;border-bottom:1px solid #ddd;padding-bottom:9px}
+button {cursor:pointer;padding:9px 13px;background:#fff;color:#174b84;border:1px solid #bbb;border-radius:3px;font:inherit;font-size:14px}
+button:hover {background:#f5f7fa} button:disabled {cursor:not-allowed;opacity:.5}
+button.primary,.tab.active {color:#fff;background:#174b84;border-color:#174b84}
+button.subtle {color:#555}
+.panel {border:1px solid #dfdfdf;padding:21px 22px;margin-bottom:20px}
+input,select,textarea {font:inherit;font-size:15px;padding:8px;border:1px solid #bbb;border-radius:2px;background:#fff;color:#202020;max-width:100%}
+input,textarea {width:100%} textarea {resize:vertical}
+label {font-size:14px;display:block;margin-bottom:7px}
+.formgrid {display:grid;gap:12px}.formgrid button {justify-self:start}
+.inline-form,.fieldrow {display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.inline-form input {width:auto}.inline-form label,.fieldrow label {margin:0}
+.fieldrow {margin:13px 0}.fieldrow select {width:auto}
+.card-meta {font-size:13px;color:#666;margin-bottom:10px}
+#card-question {font-size:21px;line-height:1.5;margin-bottom:20px;white-space:pre-wrap}
+.small-label {text-transform:uppercase;font-size:12px;letter-spacing:.06em;color:#666;margin:0 0 6px}
+.answer {font-size:19px;font-weight:600;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 13px}
+#your-answer,#confusion-hint {white-space:pre-wrap;overflow-wrap:anywhere}
+.ratings {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:13px}
+.ratings button {display:flex;flex-direction:column;align-items:center;gap:3px}
+.ratings small {font-size:12px;opacity:.8}
+.heading-row {display:flex;justify-content:space-between;align-items:center}
+.card-list {list-style:none;padding:0;margin:12px 0}
+.card-list li {display:flex;align-items:start;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #eee}
+.card-list strong,.card-list small {display:block;overflow-wrap:anywhere;white-space:pre-wrap}
+.card-list small {color:#666}.card-list .actions {display:flex;gap:4px;flex-shrink:0}
+.card-list button {padding:5px 9px;font-size:12px}
+.filelabel {margin-top:18px}
+#app-error {background:#fff1f1;color:#7d1a1a;padding:12px}
+#app-status {min-height:21px}
+hr {border:0;border-top:1px solid #e2e2e2;margin:21px 0}
+@media(max-width:680px) {
+ .page {padding:28px 20px 60px}
+ .layout {display:block;padding-top:20px}
+ nav {position:static;flex-direction:row;flex-wrap:wrap;gap:10px 17px;padding-bottom:28px}
+ .panel {padding:15px}
+ .ratings {grid-template-columns:repeat(2,minmax(0,1fr))}
+ .card-list li {flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
