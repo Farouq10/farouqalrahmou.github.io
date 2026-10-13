@@ -89,6 +89,10 @@ function bind(){
     busy=true;
     try{
       const next=newSession(deck);
+      // A reset must outrank the just-completed queue in BOTH storage copies,
+      // even if the two writes happen in the same millisecond.
+      next.revision=session.revision+1;
+      next.updatedAt=Math.max(Date.now(),session.updatedAt+1);
       await saveProgress(next);
       session=next;flipped=false;render();
       status("Progress saved on this browser.");
