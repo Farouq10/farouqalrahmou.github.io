@@ -69,7 +69,7 @@ export function newSession(deck,random=Math.random){
     schema:SCHEMA,deckId:deck.id,
     manifest:manifest(deck),queue,complete:[],
     progress:Object.fromEntries(queue.map(id=>[id,newProgress()])),
-    attempts:0,revision:0,updatedAt:0
+    attempts:0,revision:0,updatedAt:Date.now()
   };
 }
 function validCounters(p){
@@ -132,7 +132,7 @@ export function restoreSession(value,deck){
       schema:SCHEMA,deckId:deck.id,manifest:manifest(deck),
       queue:[...value.queue],complete:[...value.complete],
       progress:structuredClone(value.progress),attempts:value.attempts,
-      revision:value.attempts,updatedAt:0
+      revision:value.attempts,updatedAt:Date.now()
     };
     if(isValidSession(upgraded,deck))return upgraded;
   }

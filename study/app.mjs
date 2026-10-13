@@ -1,30 +1,20 @@
 import { PUBLISHED_DECK } from "./published-deck.mjs";
 import {
-  RATINGS, SESSION_KEY, validateDeck, newSession, isValidSession,
+  RATINGS, SESSION_KEY, validateDeck, newSession, restoreSession,
   currentCard, applyRating, remainingMistakes
 } from "./queue.mjs";
+import { loadProgress, saveProgress } from "./persistence.mjs";
 
 // No Firebase, account, uploads, deck creator, scheduler settings or analytics.
 // Published flashcards come exclusively from versioned code in GitHub.
 // Each browser saves only its independent queue; previous IndexedDB data remains untouched.
 const $=id=>document.getElementById(id);
 const deck=validateDeck(PUBLISHED_DECK);
-let session, flipped=false;
-let storageAvailable=true;
-
-function save(){
-  try { localStorage.setItem(SESSION_KEY,JSON.stringify(session)); }
-  catch {storageAvailable=false; }
-  $("save-message").textContent=storageAvailable ? "" :
-    "This browser blocked local storage, so progress will not survive a refresh.";
-}
-function load(){
-  try {
-    const raw=localStorage.getItem(SESSION_KEY);
-    const parsed=raw ? JSON.parse(raw) : null;
-    if(isValidSession(parsed,deck)) return parsed;
-  } catch { storageAvailable=false; }
-  return newSession(deck);
+let session, flipped=false, busy=false;
+function status(message){ $("save-message").textContent=message; }
+function showError(message){
+  $("error").textContent=message;
+  $("error").hidden=false;
 }
 function render(){
   const total=deck.cards.length;
@@ -50,17 +40,21 @@ function flip(){
   flipped=!flipped;
   render();
 }
-function rate(id){
-  if(!flipped||!session.queue.length)return;
+async function rate(id){
+  if(busy||!flipped||!session.queue.length)return;
+  busy=true;
   try{
-    session=applyRating(session,deck,id);
-    flipped=false;
-    save();render();
-    $("flip-card").focus();
+    const next=applyRating(session,deck,id);
+    const saved=await saveProgress(next);
+    session=next;flipped=false;
+    status(saved.replicas===2?"Progress saved on this browser.":
+      "Progress saved in one browser store; cloud sync is not enabled.");
+    $("error").hidden=true;
+    render();
+    if(session.queue.length)$("flip-card").focus();
   }catch(error){
-    $("error").textContent="Could not record the answer: "+error.message;
-    $("error").hidden=false;
-  }
+    showError("Your last answer was not saved. Try again: "+error.message);
+  }finally{busy=false;}
 }
 function bind(){
   $("flip-card").addEventListener("click",flip);
@@ -90,22 +84,49 @@ function bind(){
       event.preventDefault();rate(RATINGS[Number(event.key)-1].id);
     }
   });
-  $("again").addEventListener("click",()=>{
-    if(!session.queue.length){
-      session=newSession(deck);
-      flipped=false;save();render();$("flip-card").focus();
-    }
+  $("again").addEventListener("click",async ()=>{
+    if(busy||session.queue.length)return;
+    busy=true;
+    try{
+      const next=newSession(deck);
+      await saveProgress(next);
+      session=next;flipped=false;render();
+      status("Progress saved on this browser.");
+      $("error").hidden=true;
+      $("flip-card").focus();
+    }catch(error){showError("Could not restart safely: "+error.message);}
+    finally{busy=false;}
+  });
+  window.addEventListener("storage",event=>{
+    if(event.key!==SESSION_KEY||!event.newValue||!session)return;
+    try{
+      const other=restoreSession(JSON.parse(event.newValue),deck);
+      if(other&&(other.updatedAt>session.updatedAt||
+         (other.updatedAt===session.updatedAt&&other.revision>session.revision))){
+        session=other;flipped=false;render();
+        status("Progress updated from another tab.");
+      }
+    }catch{ /* ignore invalid external writes */ }
   });
 }
-function start(){
+async function start(){
   try{
-    session=load();
-    save();
+    const restored=await loadProgress(deck);
+    session=restored.session;
     bind();render();
     $("app").hidden=false;
+    try{
+      const result=await saveProgress(session);
+      if(restored.recovered)
+        status("Earlier progress could not be restored safely; started a new session.");
+      else
+        status(result.replicas===2?"Progress saved on this browser.":
+          "Progress saved in one browser store; cloud sync is not enabled.");
+    }catch(error){
+      showError("Progress could not be saved: "+error.message);
+    }
   }catch(error){
-    $("error").textContent="Could not open flashcards: "+error.message;
-    $("error").hidden=false;
+    showError("Could not open flashcards: "+error.message);
   }
 }
 start();

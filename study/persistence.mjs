@@ -58,9 +58,13 @@ function writeLocal(snapshot){
     throw new Error("Local storage verification failed");
 }
 function getCandidates(deck,items){
-  return items.map(item=>restoreSession(item,deck))
-    .filter(candidate=>candidate&&isValidSession(candidate,deck))
-    .sort((a,b)=>b.revision-a.revision||b.updatedAt-a.updatedAt);
+  // Compare saved clocks BEFORE deck reconciliation can refresh timestamps.
+  return items.map(item=>({
+    savedAt:Number.isFinite(item?.updatedAt)?item.updatedAt:0,
+    revision:Number.isInteger(item?.revision)?item.revision:(item?.attempts??0),
+    session:restoreSession(item,deck)
+  })).filter(x=>x.session&&isValidSession(x.session,deck))
+    .sort((a,b)=>b.savedAt-a.savedAt||b.revision-a.revision);
 }
 export async function loadProgress(deck){
   const items=[],errors=[];
@@ -70,7 +74,7 @@ export async function loadProgress(deck){
   try{items.push(readLocal(LEGACY_SESSION_KEY));}catch{ /* best effort */ }
   const valid=getCandidates(deck,items);
   return {
-    session:valid[0]??newSession(deck),
+    session:valid[0]?.session??newSession(deck),
     previousFound:items.some(Boolean),
     degraded:errors.length===2,
     recovered:items.some(Boolean)&&valid.length===0
