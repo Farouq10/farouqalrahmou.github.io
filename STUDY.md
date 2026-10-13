@@ -1,61 +1,67 @@
-# Study — shared, code-controlled flashcards
+# Study: One Deck, One Card, Five Ratings
 
-Live URL: https://farouqalrahmou.github.io/study.html
+Public URL: https://farouqalrahmou.github.io/study.html
 
-## Publishing and changing the flashcards
+## Interface
+A single card shows a question. Click (or press Space) to flip it to the answer;
+rate it with one of: Very easy (1), Easy (2), Not quite (3), No idea (4),
+Impossible (5). The next question appears instantly. No decks list, deck
+creator, edit buttons, statistics, settings, calendar, notifications or
+account.
 
-Every visitor sees the *same* published deck. There are NO deck-creation,
-card-addition, editing, deleting, demo-loading, or bulk-import controls.
+Only the owner of the GitHub repository can change shared cards in
+\`study/published-deck.mjs\`. All visitors see that same content, and there
+is exactly ONE published deck.
 
-**Edit only** \`study/published-deck.mjs\` in the GitHub repository to
-add, remove or revise cards. Commit to main; GitHub Pages publishes the changes.
-Each card must have a stable, unique ID, question (\`front\`),
-answer (\`back\`) and \`focus\` in fact/date/event/significance.
-The page reflects updated code the next time visitors reload it.
+## Queue rules
+- Everyone gets an initial shuffled pass through all of the cards.
+- Very easy or Easy on first attempt => leaves this session (mastered pile).
+- Not quite => partial/incorrect => retry after up to 4 other cards.
+- No idea => retry after up to 2 other cards.
+- Impossible => retry after up to 1 other card.
+- During the initial pass, missed cards are appended after *all unseen
+  cards*. This guarantees no unseen card gets starved by hard repeats.
+- After a missed card, TWO later Easy/Very easy responses are necessary
+  before it joins the mastered pile. The first successful recovery is
+  reinserted late (Easy: up to 7 others; Very easy: up to 12).
+- When few cards remain, queues naturally shrink, so repeats are closer.
+- When everything has been mastered, the interface says "Deck complete"
+  and offers one button to study the whole deck again.
 
-The initial public deck contains Cold War (1945–55) revision cards.
-Keep IDs stable for unchanged cards so their saved review progress continues.
-If you change a published card's question/answer/type, that card's scheduled
-state resets automatically when the site is opened again.
+The numeric queue lags and two-success rule are design hypotheses
+rather than experimentally optimised parameters. We chose a minimal
+session-based queue rather than Anki/FSRS calendar spacing, per the
+requested product behaviour.
 
-## What is saved, and where?
+## Data, privacy and continuity
+- Shared flashcard content lives in GitHub source code. No users can
+  modify it through the site. Changing source changes it for everyone.
+- Individual progress (queue + mastered pile + mistakes) is stored in
+  browser \`localStorage\` under \`study-queue-v2\`. Refreshing the same
+  browser resumes the current session.
+- Data does not sync between devices or users; there is no Firebase
+  configuration or identity system yet.
+- Old IndexedDB decks, answers and scheduling histories remain stored
+  under the earlier implementation and are NOT deleted by this change.
+  They're no longer displayed through this simplified interface.
+- If source cards change, a content fingerprint invalidates the old
+  session and safely starts a fresh session. This avoids mismatched cards.
+- On storage permission errors, the interface continues to work but
+  shows a warning that position cannot persist.
 
-- **Published content:** in GitHub source code, delivered identically to everyone.
-  It is shared without accounts or Firestore.
-- **Individual study progress:** browser-local IndexedDB, including FSRS
-  scheduling, confidence, mistakes, history, preferences. It persists across
-  reloads on the same browser unless website storage is cleared.
-- **Previous user-created cards:** remain in the same IndexedDB state and
-  are included in JSON exports, but are no longer shown or editable by the
-  current site; this preserves previous data rather than destroying it.
-- **Other devices:** progress does NOT currently transfer between devices.
-  Export/restore the JSON backup to move it manually.
+## Research grounding
 
-No global shared review state: one visitor's reviews must not alter
-another visitor's due dates. True cross-device progress without login
-requires an identity strategy such as anonymous Firebase Auth with
-account linking/recovery, and an actual configured Firebase project.
-Anonymous auth alone does not recover history on a different device.
+Rawson & Dunlosky, *Successive Relearning*, 2022:
+https://doi.org/10.1177/09637214221100484
 
-Backup import *cannot* overwrite the published card content. The code
-catalogue is reapplied to every imported backup and startup.
+Karpicke & Roediger, *The Critical Importance of Retrieval for Learning*, 2008:
+https://doi.org/10.1126/science.1152408
 
-## Scheduling
+Balota, Duchek & Logan etc. retrieval lag research:
+https://pubmed.ncbi.nlm.nih.gov/17576148/
 
-FSRS-6 with published default parameters; typed recall before feedback,
-confidence collected before reveal, Again/Hard/Good/Easy self-assessment,
-targeted answer-confusion prompts, exam-date experimental priority, and
-a same-day unaided recheck after lapses. Additional priority rules are
-experimental. They have NOT been shown to outperform Anki's FSRS.
+What the research supports: testing, feedback, and delayed retesting, ideally
+in more than one session. It does not establish that our precise 1/2/4/7/12
+queue offsets are optimal or superior to Anki. Do not claim that.
 
-Tests: \`node --test study/tests/*.test.mjs\`.
-Automated CI also runs JavaScript syntax checks on the study modules.
-No Firebase billing, third-party scripts, or separate hosting is required.
-
-## Security notes
-
-Since the source repository is public, everyone can READ the cards.
-Only someone who can commit to the repository can edit the globally
-published deck. Visitors can always modify data on *their own device*
-using browser development tools; this does not change the shared deck.
-Website scripts do not treat card text as HTML. Back up important progress.
+Tests: \`node --test study/tests/queue.test.mjs\`.

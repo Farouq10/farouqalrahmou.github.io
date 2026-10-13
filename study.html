@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Study a shared, code-published flashcard deck with private spaced-repetition progress.">
+  <meta name="description" content="One shared set of flip flashcards. Keep practising the ones you miss.">
   <title>Study — Farouq Alrahmou</title>
   <link rel="stylesheet" href="./study/study.css">
 </head>
@@ -19,97 +19,40 @@
       <a href="./index.html#contact">Contact</a>
     </nav>
     <main>
-      <h2>Study</h2>
-      <p id="deck-description" class="quiet">A shared deck of questions with adaptive review.</p>
-      <p class="notice">Everyone sees the same flashcards. Questions and answers are changed only in the website's code. <strong>Review progress is saved on this browser</strong>, separately for each device; Firebase synchronisation is not configured.</p>
-
-      <div id="study-app" hidden>
-        <div class="summary" id="study-summary" aria-live="polite"></div>
-        <div class="subnav" aria-label="Study tools">
-          <button type="button" class="tab active" data-view="review" aria-pressed="true">Review</button>
-          <button type="button" class="tab" data-view="cards" aria-pressed="false">All cards</button>
-          <button type="button" class="tab" data-view="statistics" aria-pressed="false">Statistics</button>
-          <button type="button" class="tab" data-view="settings" aria-pressed="false">Settings & backup</button>
-        </div>
-        <section id="view-review" class="view">
-          <p class="quiet" id="review-progress"></p>
-          <div id="no-review" class="panel" hidden>
-            <h3 id="empty-title">All caught up</h3>
-            <p id="empty-description"></p>
-            <button type="button" id="empty-cards">View all cards</button>
-          </div>
-          <div id="review-card" class="panel" hidden>
-            <div class="card-meta" id="card-meta"></div>
-            <h3 id="card-question"></h3>
-            <label for="typed-answer">Answer from memory <span class="quiet">(before revealing)</span></label>
-            <textarea id="typed-answer" rows="3" placeholder="Type your answer. Exact spelling is not required."></textarea>
-            <div class="fieldrow">
-              <label for="confidence">Confidence before feedback</label>
-              <select id="confidence">
-                <option value="uncertain">Uncertain</option>
-                <option value="moderate">Moderate</option>
-                <option value="certain">Certain</option>
-              </select>
-            </div>
-            <button type="button" id="reveal-answer" class="primary">Reveal answer</button>
-            <div id="answer-panel" hidden>
-              <hr>
-              <p class="small-label">Correct answer</p>
-              <p class="answer" id="correct-answer"></p>
-              <p class="quiet" id="your-answer"></p>
-              <p class="quiet" id="confusion-hint" hidden></p>
-              <p class="small-label">How well did you recall it?</p>
-              <div class="ratings" id="rating-buttons">
-                <button type="button" data-grade="1">Again <small></small></button>
-                <button type="button" data-grade="2">Hard <small></small></button>
-                <button type="button" data-grade="3">Good <small></small></button>
-                <button type="button" data-grade="4">Easy <small></small></button>
-              </div>
-              <p class="hint">Again = forgotten or incorrect. Hard = correct with substantial effort. Good = correct. Easy = immediate recall. Judge meaning, not spelling.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="view-cards" class="view panel" hidden>
-          <div class="heading-row">
-            <h3 id="published-deck-name">Published cards</h3>
-            <span id="library-count" class="quiet"></span>
-          </div>
-          <p class="quiet">Read-only questions. Changes made by the site owner to the published deck appear for everyone on the next page load.</p>
-          <label for="library-search">Search questions and answers</label>
-          <input id="library-search" placeholder="Find a flashcard">
-          <ul id="card-list" class="card-list"></ul>
-          <button type="button" id="show-more-cards" class="subtle" hidden>Show more</button>
-        </section>
-
-        <section id="view-statistics" class="view panel" hidden>
-          <h3>Review history</h3>
-          <div id="stats-content"></div>
-          <p class="hint">These statistics reflect your browser's own practice and self-assessment, not other visitors' results.</p>
-        </section>
-
-        <section id="view-settings" class="view panel" hidden>
-          <h3>Review settings</h3>
-          <form id="settings-form" class="formgrid">
-            <label>Desired recall probability (0.70–0.98)
-              <input name="retention" type="number" min="0.7" max="0.98" step="0.01" required>
-            </label>
-            <label>New cards per day (0–200)
-              <input name="newLimit" type="number" min="0" max="200" step="1" required>
-            </label>
-            <button type="submit">Save settings</button>
-          </form>
-          <hr>
-          <h3>Backup and restore</h3>
-          <p class="quiet">Export your study history. The backup also includes older decks from the previous website version, if you created any; those older decks are preserved but are no longer editable here.</p>
-          <button type="button" id="export-backup">Export JSON backup</button>
-          <label for="import-backup" class="filelabel">Restore JSON backup (replaces browser-local review data)</label>
-          <input id="import-backup" type="file" accept=".json,application/json">
-          <p class="hint">Imported files cannot change the shared questions or answers. Browsing privately, changing devices or clearing browser storage can lose progress unless you have exported it.</p>
-        </section>
+      <div class="heading">
+        <h2>Study</h2>
+        <p class="quiet" id="deck-name"></p>
       </div>
-      <p id="app-error" role="alert" hidden></p>
-      <p class="quiet small" id="app-status" role="status" aria-live="polite"></p>
+      <div id="app" hidden>
+        <div class="progress-line">
+          <span id="progress-text" aria-live="polite"></span>
+          <span id="remaining-text"></span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="Cards completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track">
+          <div id="progress-fill"></div>
+        </div>
+
+        <section id="study-card">
+          <button type="button" id="flip-card" class="flashcard" aria-label="Show the answer">
+            <span class="side-label" id="side-label">QUESTION</span>
+            <span class="flashcard-text" id="flashcard-text"></span>
+            <span class="flip-hint" id="flip-hint">Click to flip · Space ↵</span>
+          </button>
+          <div class="rating-options" id="rating-options" hidden aria-label="How well did you know it?">
+            <p class="ratings-label">How well did you know it?</p>
+            <div class="ratings" id="ratings"></div>
+          </div>
+        </section>
+
+        <section id="finished" hidden class="finished" aria-live="polite">
+          <h3>Deck complete.</h3>
+          <p>You worked through all the cards and corrected the ones you missed.</p>
+          <button type="button" id="again">Study again</button>
+        </section>
+        <p class="notice" id="save-message" role="status" aria-live="polite"></p>
+        <p class="hint">Cards you know leave this session. Mistakes return until you recall them correctly twice. Your position is saved on this browser.</p>
+      </div>
+      <p id="error" role="alert" hidden></p>
     </main>
   </div>
 </div>
