@@ -107,3 +107,38 @@ test("unknown collections are always denied", async () => {
   await assertFails(getDoc(doc(anon, "settings", "secrets")));
   await assertFails(setDoc(doc(admin, "settings", "secrets"), { any: true }));
 });
+
+const studyDoc = (db, uid) => doc(db, "studyProgress", uid);
+const studySnapshot = (version=1) => ({
+  schema:1, version,
+  session: {
+    schema:3, deckId:"published-cold-war-1945-55",
+    manifest:{a:["Question","Answer","fact"]}, queue:["a"],
+    complete:[],progress:{a:{seen:0,errors:0,correctAfterError:0}},
+    attempts:0,revision:0,updatedAt:10000
+  },
+  updatedAt:serverTimestamp()
+});
+
+test("Study cloud data can be read only by the signed-in owner", async () => {
+  await assertFails(getDoc(studyDoc(anon,"ordinary-user")));
+  await assertSucceeds(setDoc(studyDoc(user,"ordinary-user"),studySnapshot()));
+  await assertSucceeds(getDoc(studyDoc(user,"ordinary-user")));
+  await assertFails(getDoc(studyDoc(admin,"ordinary-user")));
+  await assertFails(getDocs(collection(user,"studyProgress")));
+});
+
+test("Study progress is private, versioned and server-timestamped", async () => {
+  await assertFails(setDoc(studyDoc(anon,"ordinary-user"),studySnapshot()));
+  await assertFails(setDoc(studyDoc(user,"admin-user"),studySnapshot()));
+  await assertFails(setDoc(studyDoc(user,"ordinary-user"),{
+    ...studySnapshot(),updatedAt:Timestamp.fromMillis(1000)
+  }));
+  await assertSucceeds(setDoc(studyDoc(user,"ordinary-user"),studySnapshot()));
+  await assertSucceeds(setDoc(studyDoc(user,"ordinary-user"),studySnapshot(2)));
+  await assertFails(setDoc(studyDoc(user,"ordinary-user"),studySnapshot(2)));
+  await assertFails(setDoc(studyDoc(user,"ordinary-user"),{
+    ...studySnapshot(3),extra:"unexpected"
+  }));
+  await assertFails(deleteDoc(studyDoc(user,"ordinary-user")));
+});

@@ -72,6 +72,59 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    function validStudySnapshot(data) {
+      return data.keys().hasAll(['schema', 'version', 'session', 'updatedAt']) &&
+        data.keys().hasOnly(['schema', 'version', 'session', 'updatedAt']) &&
+        data.schema == 1 &&
+        data.version is int && data.version >= 1 &&
+        data.version <= 10000000 &&
+        data.updatedAt == request.time &&
+        data.session is map &&
+        data.session.keys().hasAll([
+          'schema','deckId','manifest','queue','complete',
+          'progress','attempts','revision','updatedAt'
+        ]) &&
+        data.session.keys().hasOnly([
+          'schema','deckId','manifest','queue','complete',
+          'progress','attempts','revision','updatedAt'
+        ]) &&
+        data.session.schema == 3 &&
+        data.session.deckId is string &&
+        data.session.deckId.size() >= 1 &&
+        data.session.deckId.size() <= 100 &&
+        data.session.queue is list &&
+        data.session.complete is list &&
+        data.session.queue.size() <= 500 &&
+        data.session.complete.size() <= 500 &&
+        data.session.manifest is map &&
+        data.session.manifest.size() <= 500 &&
+        data.session.progress is map &&
+        data.session.progress.size() <= 500 &&
+        data.session.attempts is int &&
+        data.session.attempts >= 0 &&
+        data.session.attempts <= 10000000 &&
+        data.session.revision is int &&
+        data.session.revision >= 0 &&
+        data.session.updatedAt is number;
+    }
+
+    match /studyProgress/{ownerUid} {
+      function owner() {
+        return request.auth != null && request.auth.uid == ownerUid;
+      }
+      // A single private document per Firebase user. No public reads or queries.
+      allow get: if owner();
+      allow list: if false;
+      allow create: if owner() &&
+        validStudySnapshot(request.resource.data) &&
+        request.resource.data.version == 1;
+      allow update: if owner() &&
+        validStudySnapshot(request.resource.data) &&
+        request.resource.data.version == resource.data.version + 1 &&
+        request.resource.data.schema == resource.data.schema;
+      allow delete: if false;
+    }
+
     // All other collections and documents are denied by default.
     match /{document=**} {
       allow read, write: if false;
