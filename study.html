@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Private, offline-first spaced-repetition study library.">
+  <meta name="description" content="Study a shared, code-published flashcard deck with private spaced-repetition progress.">
   <title>Study — Farouq Alrahmou</title>
   <link rel="stylesheet" href="./study/study.css">
 </head>
@@ -20,27 +20,23 @@
     </nav>
     <main>
       <h2>Study</h2>
-      <p class="quiet">Active recall, spaced repetition, and deliberate error repair.</p>
-      <p class="notice">Your decks and review history are saved <strong>in this browser only</strong>. They do not yet sync to Firebase or other devices. Export a backup regularly.</p>
+      <p id="deck-description" class="quiet">A shared deck of questions with adaptive review.</p>
+      <p class="notice">Everyone sees the same flashcards. Questions and answers are changed only in the website's code. <strong>Review progress is saved on this browser</strong>, separately for each device; Firebase synchronisation is not configured.</p>
 
       <div id="study-app" hidden>
         <div class="summary" id="study-summary" aria-live="polite"></div>
-        <div class="toolbar">
-          <label for="deck-select">Deck</label>
-          <select id="deck-select" aria-label="Active deck"><option value="all">All decks</option></select>
-        </div>
         <div class="subnav" aria-label="Study tools">
-          <button type="button" class="tab active" data-view="review">Review</button>
-          <button type="button" class="tab" data-view="library">Library</button>
-          <button type="button" class="tab" data-view="statistics">Statistics</button>
-          <button type="button" class="tab" data-view="settings">Settings & backup</button>
+          <button type="button" class="tab active" data-view="review" aria-pressed="true">Review</button>
+          <button type="button" class="tab" data-view="cards" aria-pressed="false">All cards</button>
+          <button type="button" class="tab" data-view="statistics" aria-pressed="false">Statistics</button>
+          <button type="button" class="tab" data-view="settings" aria-pressed="false">Settings & backup</button>
         </div>
         <section id="view-review" class="view">
           <p class="quiet" id="review-progress"></p>
           <div id="no-review" class="panel" hidden>
             <h3 id="empty-title">All caught up</h3>
             <p id="empty-description"></p>
-            <button type="button" id="empty-library">Add cards</button>
+            <button type="button" id="empty-cards">View all cards</button>
           </div>
           <div id="review-card" class="panel" hidden>
             <div class="card-meta" id="card-meta"></div>
@@ -69,67 +65,27 @@
                 <button type="button" data-grade="3">Good <small></small></button>
                 <button type="button" data-grade="4">Easy <small></small></button>
               </div>
-              <p class="hint">Again = incorrect or forgotten. Hard = correct with major effort. Good = correct. Easy = immediate recall. Judge meaning, not just exact wording.</p>
+              <p class="hint">Again = forgotten or incorrect. Hard = correct with substantial effort. Good = correct. Easy = immediate recall. Judge meaning, not spelling.</p>
             </div>
           </div>
         </section>
 
-        <section id="view-library" class="view" hidden>
-          <div class="panel">
-            <h3>Create deck</h3>
-            <form id="new-deck-form" class="formgrid">
-              <label>Deck name <input name="deckName" maxlength="80" placeholder="e.g. Cold War dates" required></label>
-              <label>Exam / target date <span class="quiet">(optional)</span> <input name="examDate" type="date"></label>
-              <button type="submit">Create deck</button>
-            </form>
-            <p class="hint">A target date activates experimental recall-gain-per-minute prioritisation. It does not change the underlying FSRS forgetting model.</p>
+        <section id="view-cards" class="view panel" hidden>
+          <div class="heading-row">
+            <h3 id="published-deck-name">Published cards</h3>
+            <span id="library-count" class="quiet"></span>
           </div>
-          <div id="deck-editor" class="panel" hidden>
-            <h3>Add a flashcard</h3>
-            <p class="quiet">Keep each question atomic: distinguish “year”, “event”, and “significance”.</p>
-            <form id="new-card-form" class="formgrid">
-              <label>Question <textarea name="front" rows="2" maxlength="500" required></textarea></label>
-              <label>Answer <textarea name="back" rows="3" maxlength="2000" required></textarea></label>
-              <label>Question type <select name="focus">
-                <option value="fact">Fact</option><option value="date">Date</option>
-                <option value="event">Event</option><option value="significance">Significance</option>
-              </select></label>
-              <button type="submit">Add card</button>
-            </form>
-            <hr>
-            <h3>Bulk add cards</h3>
-            <p class="hint">One card per line: question, then a TAB, then answer. Maximum 500 cards at once.</p>
-            <form id="bulk-form" class="formgrid">
-              <textarea name="bulk" rows="5" placeholder="When was NATO established?&#9;1949&#10;What happened in 1948?&#9;Berlin Blockade begins" required></textarea>
-              <button type="submit">Import tab-separated cards</button>
-            </form>
-            <hr>
-            <h3>Deck options</h3>
-            <form id="deck-options-form" class="inline-form">
-              <label for="edit-exam-date">Target date</label>
-              <input id="edit-exam-date" type="date">
-              <button type="submit">Save</button>
-              <button type="button" class="subtle" id="delete-deck">Delete deck</button>
-            </form>
-          </div>
-          <div class="panel">
-            <div class="heading-row"><h3>Cards</h3><span id="library-count" class="quiet"></span></div>
-            <label for="library-search">Find a card</label>
-            <input id="library-search" placeholder="Search questions and answers">
-            <ul id="card-list" class="card-list"></ul>
-            <button type="button" id="show-more-cards" class="subtle" hidden>Show more</button>
-          </div>
-          <div class="panel">
-            <h3>Example material</h3>
-            <p class="quiet">Load ten optional Edexcel Cold War (1945–55) practice cards into a separate example deck.</p>
-            <button type="button" id="load-demo">Load Cold War demo</button>
-          </div>
+          <p class="quiet">Read-only questions. Changes made by the site owner to the published deck appear for everyone on the next page load.</p>
+          <label for="library-search">Search questions and answers</label>
+          <input id="library-search" placeholder="Find a flashcard">
+          <ul id="card-list" class="card-list"></ul>
+          <button type="button" id="show-more-cards" class="subtle" hidden>Show more</button>
         </section>
 
         <section id="view-statistics" class="view panel" hidden>
           <h3>Review history</h3>
           <div id="stats-content"></div>
-          <p class="hint">Recall accuracy and forecast values are descriptive, not proof that the experimental scheduling improvements work.</p>
+          <p class="hint">These statistics reflect your browser's own practice and self-assessment, not other visitors' results.</p>
         </section>
 
         <section id="view-settings" class="view panel" hidden>
@@ -145,11 +101,11 @@
           </form>
           <hr>
           <h3>Backup and restore</h3>
-          <p class="quiet">Download a complete JSON backup of your decks, card states and review log. Keep the file private if your answers or notes are personal.</p>
+          <p class="quiet">Export your study history. The backup also includes older decks from the previous website version, if you created any; those older decks are preserved but are no longer editable here.</p>
           <button type="button" id="export-backup">Export JSON backup</button>
-          <label for="import-backup" class="filelabel">Import JSON backup (replaces all local study data)</label>
+          <label for="import-backup" class="filelabel">Restore JSON backup (replaces browser-local review data)</label>
           <input id="import-backup" type="file" accept=".json,application/json">
-          <p class="hint">Browser data may be lost if you clear site storage, use another device, or use private browsing. There is no automatic cloud backup yet.</p>
+          <p class="hint">Imported files cannot change the shared questions or answers. Browsing privately, changing devices or clearing browser storage can lose progress unless you have exported it.</p>
         </section>
       </div>
       <p id="app-error" role="alert" hidden></p>
