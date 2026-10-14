@@ -164,6 +164,32 @@ async function rate(id){
   }finally{busy=false;}
 }
 function bind(){
+  $("export-progress").addEventListener("click",()=>{
+    const blob=new Blob([JSON.stringify({format:"farouq-study-backup-v1",session},null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob),link=document.createElement("a");
+    link.href=url;link.download="farouq-study-progress.json";link.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+  $("import-progress").addEventListener("change",async event=>{
+    const file=event.target.files[0];
+    if(!file||busy)return;
+    busy=true;
+    try{
+      if(file.size>5000000)throw new Error("Backup is too large");
+      const raw=JSON.parse(await file.text());
+      const restored=restoreSession(raw.format==="farouq-study-backup-v1"?raw.session:raw,deck);
+      if(!restored)throw new Error("Invalid backup or different deck");
+      if(!window.confirm("Replace current progress with this backup? A safety copy of current progress will be kept."))return;
+      keepSafetyCopy(session);
+      restored.revision=Math.max(restored.revision,session.revision)+1;
+      restored.updatedAt=Math.max(Date.now(),session.updatedAt+1);
+      await saveProgress(restored);
+      session=restored;flipped=false;render();
+      cloudLater(structuredClone(restored));
+      status("Backup restored and saved on this browser.");
+    }catch(error){showError("Could not restore backup: "+error.message);}
+    finally{busy=false;event.target.value="";}
+  });
   $("flip-card").addEventListener("click",flip);
   $("cloud-button").addEventListener("click",async ()=>{
     if(!cloudAPI)return;
@@ -252,3 +278,4 @@ async function start(){
   }
 }
 start();
+
