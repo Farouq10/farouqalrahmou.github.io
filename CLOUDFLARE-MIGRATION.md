@@ -1,24 +1,13 @@
-# Flashcard migration — prepared, not deployed
+# Edexcel date flashcards
 
-Copy `study.html` and the complete `study/` directory to the existing farouq.pages.dev site's source/output and add a navigation link to `/study.html`. The included `index.html` is the original GitHub site's index for reference; do not replace an existing Cloudflare home page without checking its source.
+159 date-only cards: 75 Medicine/Western Front and 84 Cold War. Four FSRS ratings, five visual memory-strength stacks, due-first weakest-recall ordering, and optional early review. No card editor or accounts.
 
-The original queue.mjs, persistence.mjs, cloud.mjs and cloud-policy.mjs are copied from farouqalrahmou/farouqalrahmou.github.io. Queue delivery logic is unchanged. The published deck retains its original ID and its 23 original cards so stored v3 progress can reconcile with the added cards.
+Study entrypoint: study.html. Requires study/date-app.mjs, date-cards.mjs, scheduler.mjs, local-save.mjs, fsrs.mjs, minimal.css and sources.html. Bundle is local: no CDN or runtime network dependencies. Preserve the existing Cloudflare site when adding this route.
 
-237 cards total: 23 original cards plus 214 added date/significance cards. Coverage assumes Edexcel options 11 and P4 because the original deck identifies Edexcel. This is a broad revision set, not a claim that date recall alone guarantees Grade 9. See study/sources.html.
+FSRS is bundled from upstream MIT source commit c8ca282edc3fe1cdfa1c24912437938b63a25cb3. License: study/FSRS-LICENSE.txt. Settings use default upstream parameters, 90% retention, no fuzz. Five stack boundaries are display choices, not a new trained algorithm. Parameters are not personally optimised.
 
-## Saving
+Browser saving uses localStorage and IndexedDB. Backup/restore is hidden under a details panel. Earlier queue snapshots remain untouched; they lack timestamps needed to reconstruct FSRS histories. No Firebase setup required.
 
-LocalStorage and IndexedDB save each answer. Export/import creates a portable JSON backup. Existing progress on github.io is not automatically accessible on pages.dev. A valid old session snapshot can be imported and reconciled with the expanded deck.
+Seven FSRS integration tests pass: card integrity, grading times/immutability, failure stacks, due versus ahead selection, date revival, content reconciliation and invalid data. Browser UI validation and final card-by-card source audit remain outstanding. Broad historical coverage is not an official exhaustive list.
 
-## Optional Firebase
-
-The original Firebase configuration is null, so cloud sync is not active. To enable it, provide public Web app configuration in study/firebase-config.mjs; enable Google authentication; authorise farouq.pages.dev and the Firebase auth domain; create Firestore; deploy owner-only security rules using the owner's actual UID. The existing adapter stores progress at studyProgress/{uid}. Test reads, writes, conflict resolution and signed-out access before claiming cloud saving works. Do not use open database rules or anonymous global progress just because only one person is expected to visit.
-
-The existing cloud adapter references Firebase SDK 13.0.0. That remote dependency was not verified in this workspace; verify it or bundle a supported SDK before enabling sync.
-
-## Hosting
-
-Serve all files over HTTP(S). Allow local module scripts in your CSP. If cloud sync is enabled, configure CSP to permit the Firebase SDK and the project's required Auth/Firestore connections, then test it. Preserve the rest of the existing site's content and headers.
-
-Deployment was blocked: the managed network proxy refused connections, including the authorised Cloudflare API. No Cloudflare project was modified.
-
+Cloudflare deployment remains blocked by proxy connection refusal; farouq.pages.dev has not changed. Do not merge expecting this GitHub Pages repository to deploy the Cloudflare site automatically. Identify its actual deployment project/source first.
