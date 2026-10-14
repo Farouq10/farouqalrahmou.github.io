@@ -1,10 +1,12 @@
+import { EXPANDED_CARDS } from "./expanded-cards.mjs";
 /** One read-only shared deck. Edit this file to publish cards for all visitors. */
 export const PUBLISHED_DECK = Object.freeze({
   id: "published-cold-war-1945-55",
-  name: "Cold War: 1945–55",
-  description: "Core dates, events and historical significance for Edexcel GCSE History.",
+  name: "Medicine & Cold War — Edexcel GCSE History",
+  description: "Medicine in Britain, c1250–present; Western Front, 1914–18; and Superpower relations, 1941–91. Dates and significance for revision.",
   examDate: "", // Optional YYYY-MM-DD; affects experimental deadline ranking.
   cards: Object.freeze([
+    ...EXPANDED_CARDS,
     {id:"cw-yalta-date",front:"When was the Yalta Conference?",back:"February 1945.",focus:"date"},
     {id:"cw-potsdam-date",front:"When was the Potsdam Conference?",back:"July–August 1945.",focus:"date"},
     {id:"cw-potsdam-disagreement",front:"What caused tension between Truman and Stalin at Potsdam?",back:"Disagreements over Germany's future, reparations and Soviet control of Eastern Europe.",focus:"significance"},
@@ -30,4 +32,5 @@ export const PUBLISHED_DECK = Object.freeze({
     {id:"cw-warsaw-role",front:"Why was the Warsaw Pact created?",back:"A Soviet-led military alliance formed after West Germany joined NATO.",focus:"significance"}
   ])
 });
+
 
