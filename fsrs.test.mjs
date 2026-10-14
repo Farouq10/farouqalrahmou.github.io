@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {DATE_CARDS} from './study/date-cards.mjs';import {fresh,grade,restore,ordered,stack} from './study/scheduler.mjs';
+const now=new Date('2026-01-01T12:00:00Z');const cards=DATE_CARDS.slice(0,3);
+test('159 unique date cards cover both topics',()=>{assert.equal(DATE_CARDS.length,159);assert.equal(new Set(DATE_CARDS.map(c=>c.id)).size,159);assert.ok(DATE_CARDS.every(c=>c.back&&c.front));});
+test('grading uses actual review time and does not mutate original',()=>{const p=fresh(cards,now),n=grade(p,cards[0].id,3,now);assert.equal(p.cards[cards[0].id].memory.reps,0);assert.equal(n.cards[cards[0].id].memory.reps,1);assert.equal(+n.cards[cards[0].id].memory.last_review,+now);assert.ok(+n.cards[cards[0].id].memory.due>+now);});
+test('failure returns learned card to weakest stack',()=>{let p=fresh(cards,now);p=grade(p,cards[0].id,4,now);p=grade(p,cards[0].id,1,new Date(+now+86400000*10));assert.equal(stack(p.cards[cards[0].id].memory),1);});
+test('due-only excludes future cards, study-ahead includes them',()=>{let p=fresh(cards,now);p=grade(p,cards[0].id,4,now);assert.ok(!ordered(p,cards,now).some(c=>c.id===cards[0].id));assert.equal(ordered(p,cards,now,true).length,3);});
+test('backup preserves memory dates and review log',()=>{const p=grade(fresh(cards,now),cards[0].id,3,now);const r=restore(JSON.parse(JSON.stringify(p)),cards,now);assert.equal(+r.cards[cards[0].id].memory.due,+p.cards[cards[0].id].memory.due);assert.equal(r.cards[cards[0].id].log.length,1);});
+test('content edit resets only edited card; additions preserve others',()=>{const p=grade(fresh(cards,now),cards[0].id,3,now);const r=restore(p,[cards[0],{...cards[1],back:'Changed'},...DATE_CARDS.slice(2,4)],now);assert.equal(r.cards[cards[0].id].memory.reps,1);assert.equal(r.cards[cards[1].id].memory.reps,0);});
+test('corrupt memory and invalid rating rejected',()=>{const p=fresh(cards,now);p.cards[cards[0].id].memory.due='broken';assert.throws(()=>restore(p,cards));assert.throws(()=>grade(fresh(cards,now),cards[0].id,5,now));});
