@@ -58,6 +58,11 @@
           <button type="button" id="use-cloud">Use cloud progress</button>
           <button type="button" id="use-device">Use this device</button>
         </div>
+        <div class="cloud-line">
+          <button type="button" id="export-progress">Download progress backup</button>
+          <label>Restore backup <input type="file" id="import-progress" accept=".json,application/json"></label>
+        </div>
+        <p class="hint">Edexcel options 11 and P4. Dates are paired with explanations: higher-mark answers also need causes, consequences and supported judgements. <a href="./study/sources.html">Scope and sources</a>.</p>
         <p class="notice" id="save-message" role="status" aria-live="polite"></p>
         <p class="hint">Cards you know leave this session. Mistakes repeat until corrected twice. This browser always saves your position; cloud saving works after Google sign-in and Firebase setup.</p>
       </div>
@@ -68,3 +73,4 @@
 <script type="module" src="./study/app.mjs"></script>
 </body>
 </html>
+
