@@ -1,5 +1,5 @@
 /* Tessera analysis-led English cards: short quotations, original commentary, no long extracts. */
-export const ENGLISH=[
+export const ENGLISH= [
   {
     "id": "english-aic",
     "subject": "English",
@@ -548,6 +548,166 @@ export const ENGLISH=[
         "front": "Why is the Inspector's identity less important than his message?",
         "back": "Even a hoax cannot undo the family's demonstrable choices.",
         "skill": "argument",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-1",
+        "topic": "Quotation recall",
+        "front": "Act 1, Birling: 'cheap ___'",
+        "back": "labour — employer sees workers primarily as a cost.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-2",
+        "topic": "Quotation recall",
+        "front": "Act 1, Birling: 'community and all that ___'",
+        "back": "nonsense — disparages social solidarity.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-3",
+        "topic": "Quotation recall",
+        "front": "Act 1, Birling: 'unsinkable, absolutely ___'",
+        "back": "unsinkable — dramatic irony destroys his certainty.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-4",
+        "topic": "Quotation recall",
+        "front": "Act 1, Birling: 'a man has to mind his own ___'",
+        "back": "business — encapsulates individualism.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-5",
+        "topic": "Quotation recall",
+        "front": "Act 1, Sheila: 'I'll never, never do it again to ___'",
+        "back": "anybody — genuine remorse and change.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-6",
+        "topic": "Quotation recall",
+        "front": "Act 2, Mrs Birling: 'girls of that ___'",
+        "back": "class — exposes dehumanising snobbery.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-7",
+        "topic": "Quotation recall",
+        "front": "Act 2, Mrs Birling: 'I've done nothing ___'",
+        "back": "wrong — refusal to accept responsibility.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-8",
+        "topic": "Quotation recall",
+        "front": "Act 3, Inspector: 'we are members of one ___'",
+        "back": "body — interdependence is the central moral claim.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-9",
+        "topic": "Quotation recall",
+        "front": "Act 3, Inspector: 'fire and blood and ___'",
+        "back": "anguish — ominous consequences of selfishness.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-10",
+        "topic": "Quotation recall",
+        "front": "Act 3, Sheila: 'it frightens me the way you ___'",
+        "back": "talk — dismay at parental complacency.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-11",
+        "topic": "Quotation recall",
+        "front": "Act 1, Birling: 'lower costs and higher ___'",
+        "back": "prices — a focus on business gain.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-12",
+        "topic": "Quotation recall",
+        "front": "Act 2, Sheila: 'You mustn't try to build up a kind of ___'",
+        "back": "wall — opposition to concealing the truth.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-13",
+        "topic": "Argument bank",
+        "front": "Three compact anchors for Birling and capitalism?",
+        "back": "Cheap labour; own business; community as nonsense. Link profit, individualism, and moral blindness.",
+        "skill": "quote-bank",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-14",
+        "topic": "Argument bank",
+        "front": "Three anchors for Sheila's moral transformation?",
+        "back": "Dismissal of Eva; explicit remorse; challenge to parental denial. Track change across the acts.",
+        "skill": "quote-bank",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-15",
+        "topic": "Argument bank",
+        "front": "Three anchors for Mrs Birling and class?",
+        "back": "Class label; charity gatekeeping; her accusation against the child's father.",
+        "skill": "quote-bank",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-16",
+        "topic": "Argument bank",
+        "front": "Three anchors for Inspector's collective ethic?",
+        "back": "One body; public interrogation; final warning. Move from metaphor to consequence.",
+        "skill": "quote-bank",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-17",
+        "topic": "Argument bank",
+        "front": "Three anchors for structural irony in the play?",
+        "back": "Titanic prediction; war prediction; final phone call. Each punctures confident certainty.",
+        "skill": "quote-bank",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-18",
+        "topic": "Argument bank",
+        "front": "Three anchors for Gerald's moral ambiguity?",
+        "back": "Daisy's rescue; temporary dependence; return to the ring. Avoid one-dimensional judgement.",
+        "skill": "quote-bank",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-19",
+        "topic": "Argument bank",
+        "front": "Three anchors for Eva as resistance, not just victim?",
+        "back": "Demand for wages; refusal of stolen money; persistence under economic exclusion.",
+        "skill": "quote-bank",
+        "weight": 3
+      },
+      {
+        "id": "aic-extra-20",
+        "topic": "Argument bank",
+        "front": "Three anchors for the generation divide?",
+        "back": "Sheila's remorse; Eric's acceptance; parental relief over possible hoax.",
+        "skill": "quote-bank",
         "weight": 3
       }
     ]
@@ -1396,6 +1556,126 @@ export const ENGLISH=[
         "front": "Comparison with Poppies?",
         "back": "Both examine how warfare ruptures intimate family relationships.",
         "skill": "compare",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-1",
+        "topic": "Ozymandias",
+        "front": "Complete Shelley's warning: 'Look on my Works, ye Mighty, and ___!'",
+        "back": "despair — the boast is ironic beside the ruins.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-2",
+        "topic": "London",
+        "front": "Complete Blake's metaphor: 'mind-forg'd ___'",
+        "back": "manacles — oppression internalised as constraint.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-3",
+        "topic": "The Prelude",
+        "front": "What short phrase makes the mountain seem immense and threatening?",
+        "back": "'huge peak' — scale destabilises human confidence.",
+        "skill": "quote-anchor",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-4",
+        "topic": "My Last Duchess",
+        "front": "Complete the Duke's chilling admission: 'I gave ___'",
+        "back": "commands — implied control and coercive power.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-5",
+        "topic": "The Charge of the Light Brigade",
+        "front": "Complete: 'Theirs not to reason ___'",
+        "back": "why — obedience displaces independent judgment.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-6",
+        "topic": "Exposure",
+        "front": "Complete the refrain: 'But nothing ___'",
+        "back": "happens — cyclical, agonising futility.",
+        "skill": "cloze",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-7",
+        "topic": "Storm on the Island",
+        "front": "What is the poem's short paradoxical ending image?",
+        "back": "'a huge nothing' — the invisible threat remains overwhelming.",
+        "skill": "quote-anchor",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-8",
+        "topic": "Bayonet Charge",
+        "front": "What is disrupted when the soldier questions patriotic slogans?",
+        "back": "Abstract ideals of honour and nationhood; instinctive survival dominates.",
+        "skill": "quote-anchor",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-9",
+        "topic": "Remains",
+        "front": "What four-word phrase keeps the soldier uncertain?",
+        "back": "'probably armed, possibly not' — unresolved moral doubt.",
+        "skill": "quote-anchor",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-10",
+        "topic": "Poppies",
+        "front": "What is the role of paper poppies on the clothing?",
+        "back": "A tactile symbol of remembrance merging the ordinary home with war.",
+        "skill": "quote-anchor",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-11",
+        "topic": "War Photographer",
+        "front": "Which compact image makes photographs into suffering?",
+        "back": "'spools of suffering' — metonymy for repeated atrocity.",
+        "skill": "quote-anchor",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-12",
+        "topic": "Tissue",
+        "front": "What is paper contrasted with?",
+        "back": "Living human bodies and light; documents are fragile while life remains valuable.",
+        "skill": "quote-anchor",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-13",
+        "topic": "The Emigrée",
+        "front": "What recurring image protects an idealised homeland?",
+        "back": "Sunlight, suggesting cherished memory, warmth and identity.",
+        "skill": "quote-anchor",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-14",
+        "topic": "Checking Out Me History",
+        "front": "Which recurring phrase evokes official indoctrination?",
+        "back": "'dem tell me' — repeats the voice of imposed history.",
+        "skill": "quote-anchor",
+        "weight": 3
+      },
+      {
+        "id": "poem-extra-15",
+        "topic": "Kamikaze",
+        "front": "What phrase frames the pilot's expected fate?",
+        "back": "'one-way journey into history' — militarised ideas of duty and honour.",
+        "skill": "quote-anchor",
         "weight": 3
       }
     ]
