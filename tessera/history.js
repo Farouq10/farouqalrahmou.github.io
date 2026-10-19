@@ -87,14 +87,6 @@ export const HISTORY = [
         "weight": 2
       },
       {
-        "id": "history-medicine-11",
-        "front": "When? Variolation became established in Britain",
-        "back": "1721 — Pre-Jenner smallpox prevention carried genuine risks.",
-        "topic": "Timeline",
-        "date": "1721",
-        "weight": 2
-      },
-      {
         "id": "history-medicine-12",
         "front": "When? Jenner performed his first cowpox vaccination test",
         "back": "1796 — His research laid the groundwork for smallpox vaccination.",
@@ -223,14 +215,6 @@ export const HISTORY = [
         "weight": 2
       },
       {
-        "id": "history-medicine-28",
-        "front": "When? Second major London cholera investigation by Snow's successors",
-        "back": "1866 — Strengthened the waterborne explanation and sanitary reform.",
-        "topic": "Timeline",
-        "date": "1866",
-        "weight": 2
-      },
-      {
         "id": "history-medicine-29",
         "front": "When? Lister published antiseptic surgery results",
         "back": "1867 — Made an influential case for controlling infection.",
@@ -311,14 +295,6 @@ export const HISTORY = [
         "weight": 2
       },
       {
-        "id": "history-medicine-39",
-        "front": "When? 1906 Liberal government won office",
-        "back": "1906 — The Liberal reforms set a context for welfare and healthcare measures.",
-        "topic": "Timeline",
-        "date": "1906",
-        "weight": 2
-      },
-      {
         "id": "history-medicine-40",
         "front": "When? Salvarsan 606 discovered",
         "back": "1909 — Ehrlich's targeted chemical treatment for syphilis was an early 'magic bullet'.",
@@ -345,9 +321,9 @@ export const HISTORY = [
       {
         "id": "history-medicine-43",
         "front": "When? Thomas splint introduced widely in wartime care",
-        "back": "1915 — Improved survival of soldiers with femur fractures.",
+        "back": "1916 — Improved survival of soldiers with femur fractures.",
         "topic": "Timeline",
-        "date": "1915",
+        "date": "1916",
         "weight": 2
       },
       {
@@ -497,9 +473,9 @@ export const HISTORY = [
       {
         "id": "history-germany-8",
         "front": "When? German Workers' Party renamed as Nazi Party soon after Hitler joined",
-        "back": "Jan 1920 — The movement expanded its identity and programme.",
+        "back": "Feb 1920 — The movement expanded its identity and programme.",
         "topic": "Timeline",
-        "date": "Jan 1920",
+        "date": "Feb 1920",
         "weight": 2
       },
       {
@@ -832,10 +808,10 @@ export const HISTORY = [
       },
       {
         "id": "history-germany-50",
-        "front": "When? Reich Central Office for Jewish Emigration established",
-        "back": "1939 — Organised coercive pressure on Jews to leave Germany.",
+        "front": "When? Germany invaded Poland",
+        "back": "1 Sep 1939 — Triggered the Second World War in Europe and intensified Nazi dictatorship.",
         "topic": "Timeline",
-        "date": "1939",
+        "date": "1 Sep 1939",
         "weight": 2
       }
     ]
@@ -1026,14 +1002,6 @@ export const HISTORY = [
         "id": "history-cold-war-23",
         "front": "When? Warsaw Pact founded",
         "back": "1955 — Soviet-led military alliance formed after West German NATO membership.",
-        "topic": "Timeline",
-        "date": "1955",
-        "weight": 2
-      },
-      {
-        "id": "history-cold-war-24",
-        "front": "When? Geneva Summit held",
-        "back": "1955 — Brief improvement in superpower diplomacy.",
         "topic": "Timeline",
         "date": "1955",
         "weight": 2
@@ -1656,10 +1624,10 @@ export const HISTORY = [
       },
       {
         "id": "history-elizabeth-50",
-        "front": "When? English Poor Law Act passed",
-        "back": "1588 — Part of evolving Tudor poverty relief legislation.",
+        "front": "When? English fireships broke up the Spanish Armada formation",
+        "back": "Jul 1588 — Fireships at Calais scattered the fleet before Gravelines.",
         "topic": "Timeline",
-        "date": "1588",
+        "date": "Jul 1588",
         "weight": 2
       }
     ]
