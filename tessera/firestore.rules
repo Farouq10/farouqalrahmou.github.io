@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId}/state/{documentId} {
+      function owner() {
+        return request.auth != null
+          && request.auth.uid == userId
+          && documentId == "main";
+      }
+      allow get: if owner();
+      allow list: if false;
+      allow create, update: if owner()
+        && request.resource.data.keys().hasOnly(["version", "payload", "savedAt"])
+        && request.resource.data.version is int
+        && request.resource.data.payload is map
+        && request.resource.data.payload.keys().hasOnly(["progress", "reviews", "prefs", "modified"])
+        && request.resource.data.payload.progress is map
+        && request.resource.data.payload.reviews is list
+        && request.resource.data.payload.prefs is map;
+      allow delete: if false;
+    }
+  }
+}
