@@ -5,7 +5,7 @@ A separate GCSE revision website, ready for free static hosting on **Cloudflare 
 ## What's in the app
 
 - **History:** four Edexcel GCSE units, **exactly 50 dated events each**: Medicine in Britain, Weimar and Nazi Germany, Superpower relations and the Cold War, and Early Elizabethan England. Every card pairs a dated event with an explanation of significance.
-- **English:** **68** analytical *An Inspector Calls* cards, plus **105** analysis and comparison cards across all **15** AQA Power & Conflict poems. Cards use brief anchors and original analytical summaries rather than reproducing long copyrighted extracts.
+- **English:** **88** analytical *An Inspector Calls* cards, plus **120** analysis and comparison cards across all **15** AQA Power & Conflict poems. Cards use brief anchors and original analytical summaries rather than reproducing long copyrighted extracts.
 - **Revision:** focused mixed reviews, an interleaved queue, in-session repeated mistakes, delayed intervals, optional confidence predictions, timing, progress statistics and a searchable date atlas.
 - **Data:** browser storage and portable JSON backups; optional Google sign-in and cloud progress after Firebase setup.
 - **No subscriptions, trackers, advertisements or runtime build framework.**
