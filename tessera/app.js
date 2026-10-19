@@ -88,3 +88,5 @@ window.addEventListener("hashchange",render);
 window.addEventListener("keydown",e=>{if(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))return;if(route()!=="review"||!current)return;if(e.code==="Space"&&!flipped){e.preventDefault();flipped=true;render()}else if(flipped&&["1","2","3","4"].includes(e.key)){gradeCard(Number(e.key)-1)}});
 render();
 bootSync({onReady:connectState,onRemote:initialCloud,onNotice:message=>toast(message)}).catch(e=>console.warn("Optional cloud not configured:",e));
+
+if(typeof navigator!=="undefined" && "serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js").catch(()=>{});}
