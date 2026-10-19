@@ -34,7 +34,7 @@ The site works *immediately* without authentication, with local browser storage.
 
 **Never** put an admin SDK service-account key, private key, account password or Firebase bearer token in this repository. The browser-side Firebase API key is a public identifier and is not a server secret; database security depends on authentication and strict Firestore rules. Google handles account credentials.
 
-Free Firebase Spark Firestore quota (check for changes): 1 GiB stored, 50,000 document reads/day and 20,000 document writes/day, with 10 GiB outbound data/month. As the deck library is static, only each person's review state consumes Firestore storage. The app debounces cloud writes and checks for concurrent updates. If conflicting states are detected, it **does not silently merge** them. Export backups periodically.
+Free Firebase Spark Firestore quota (check for changes): 1 GiB stored, 50,000 document reads/day and 20,000 document writes/day, with 10 GiB outbound data/month. As the deck library is static, only each person's review state consumes Firestore storage. The app syncs each card's full scheduling state and the 2,000 most recent review events; older review events remain in the originating browser and JSON backups. The app debounces cloud writes and checks for concurrent updates. If conflicting states are detected, it **does not silently merge** them. Export backups periodically.
 
 ## About the scheduler: Tessera R1
 
