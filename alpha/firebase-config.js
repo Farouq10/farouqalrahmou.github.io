@@ -1,11 +1,10 @@
-// One-time setup: paste your PUBLIC Firebase web app config here.
-// Project settings → Your apps → Web app → SDK setup and configuration.
-// This file contains public project identifiers, NEVER passwords or service-account keys.
-// Example:
-// export const firebaseConfig = {
-//   apiKey: "YOUR_PUBLIC_WEB_API_KEY",
-//   authDomain: "your-project.firebaseapp.com",
-//   projectId: "your-project",
-//   appId: "1:123456789:web:abc123"
-// };
-export const firebaseConfig = null;
+// Public Firebase Web app identifiers. No service-account keys or passwords.
+export const firebaseConfig = {
+  apiKey: "AIzaSyA6khHnf0LxFJS7hCz_wm6zOLXNnTIfVAA",
+  authDomain: "alpha-eecd9.firebaseapp.com",
+  projectId: "alpha-eecd9",
+  storageBucket: "alpha-eecd9.firebasestorage.app",
+  messagingSenderId: "30137424207",
+  appId: "1:30137424207:web:8eb972af277fc1faf60d3a",
+  measurementId: "G-Q839D2PW5H"
+};
