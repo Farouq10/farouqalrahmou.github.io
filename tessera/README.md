@@ -1,4 +1,4 @@
-# Tessera — Make it stick
+# Rekind — Make it stick
 
 A separate GCSE revision website, ready for free static hosting on **Cloudflare Pages**. The live URL is created **by you** when you deploy; a `.pages.dev` name is not reserved by these files.
 
@@ -14,7 +14,7 @@ A separate GCSE revision website, ready for free static hosting on **Cloudflare 
 
 1. Sign in to [Cloudflare](https://dash.cloudflare.com/) and open **Workers & Pages → Create → Pages → Connect to Git**.
 2. Connect GitHub and select the existing `farouqalrahmou/farouqalrahmou.github.io` repository. This creates a **separate Cloudflare Pages project**; it does not replace the GitHub Pages portfolio.
-3. Choose project name such as `tessera-recall` (subject to availability), production branch **main**, framework **None**, **no build command**, build output directory **tessera**.
+3. Choose project name such as `rekind-recall` (subject to availability), production branch **main**, framework **None**, **no build command**, build output directory **tessera**.
 4. Deploy. Your independent revision site will have the chosen **project-name.pages.dev** hostname. Updates to the tessera folder will redeploy automatically after Git commits.
 
 **Important:** GitHub Pages also allows previewing the app at `https://farouqalrahmou.github.io/tessera/` when the site's Pages deployment is enabled. This path is not a separate hostname, and the deployment status is not confirmed by these files.
@@ -36,9 +36,9 @@ The site works *immediately* without authentication, with local browser storage.
 
 Free Firebase Spark Firestore quota (check for changes): 1 GiB stored, 50,000 document reads/day and 20,000 document writes/day, with 10 GiB outbound data/month. As the deck library is static, only each person's review state consumes Firestore storage. The app syncs each card's full scheduling state and the 2,000 most recent review events; older review events remain in the originating browser and JSON backups. The app debounces cloud writes and checks for concurrent updates. If conflicting states are detected, it **does not silently merge** them. Export backups periodically.
 
-## About the scheduler: Tessera R1
+## About the scheduler: Rekind R1
 
-**No honest evidence currently establishes that Tessera R1 outperforms modern Anki FSRS.** Anki's current FSRS scheduler is a serious research-backed baseline; simply adding more features would not establish superiority.
+**No honest evidence currently establishes that Rekind R1 outperforms modern Anki FSRS.** Anki's current FSRS scheduler is a serious research-backed baseline; simply adding more features would not establish superiority.
 
 R1 is a transparent experimental hybrid:
 - A card carries a learned **90%-retention interval** (stability).
@@ -62,3 +62,7 @@ Evidence background:
 - A public revision resource can help, but every historical fact and interpretation should still be cross-checked against the final exam-board specification, school teaching and trusted references.
 - Not designed to run a public leaderboard or collect minors' personal details. No account information is stored in the flashcard files.
 - Code is intentionally framework-free so that it can be moved to Cloudflare, GitHub Pages, Netlify or other free static hosts without a build step.
+
+## Why the source folder is still called `tessera`
+
+The public-facing product is now **Rekind**. The existing repository folder remains `tessera` so deployment settings, deep links, local-storage data, and previously created GitHub paths do not break. You can name the Cloudflare Pages project `rekind-recall` (if available) while keeping the output directory `tessera`.
