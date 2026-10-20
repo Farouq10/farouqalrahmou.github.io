@@ -32,3 +32,19 @@ h1,h2,h3{line-height:1.25;font-weight:600;margin:0;letter-spacing:-.035em}h1{fon
 .problem-image-missing strong{color:var(--ink);font-weight:500}
 .problem-image-missing p{margin:6px 0 0}
 @media(max-width:700px){.revision-thesis{padding:18px}.revision-thesis p{font-size:15px}.revision-point{grid-template-columns:24px 1fr;gap:7px}.revision-jump{max-height:120px;overflow-y:auto}.problem-crop{padding:5px}}
+
+/* Quote-led GCSE revision cards. */
+.quote-led{margin:26px 0 32px}
+.quote-led h2{font-size:20px;margin-bottom:16px}
+.quote-led-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.evidence-card{border:1px solid var(--line);background:#fff;padding:18px 20px}
+.evidence-card h3{font-size:14px;line-height:1.4}
+.evidence-card p{font-size:13px;line-height:1.65;margin:10px 0 0}
+.evidence-card .evidence-quote{font-family:Georgia,serif;font-size:18px;color:var(--accent);line-height:1.5}
+.evidence-card .evidence-link{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:10px}
+.revision-comparison{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin:20px 0}
+.revision-comparison strong{font-size:13px}
+.revision-comparison p{font-size:14px;margin:7px 0 0;line-height:1.65}
+.extended-notes{margin:25px 0}
+.extended-notes>summary{cursor:pointer;font-size:14px;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:13px}
+@media(max-width:700px){.quote-led-grid{grid-template-columns:1fr}.evidence-card{padding:16px}}
