@@ -1,23 +1,49 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /users/{userId}/state/{documentId} {
-      function owner() {
-        return request.auth != null
-          && request.auth.uid == userId
-          && documentId == "main";
-      }
-      allow get: if owner();
-      allow list: if false;
-      allow create, update: if owner()
-        && request.resource.data.keys().hasOnly(["version", "payload", "savedAt"])
-        && request.resource.data.version is int
-        && request.resource.data.payload is map
-        && request.resource.data.payload.keys().hasOnly(["progress", "reviews", "prefs", "modified"])
-        && request.resource.data.payload.progress is map
-        && request.resource.data.payload.reviews is list
-        && request.resource.data.payload.prefs is map;
-      allow delete: if false;
+    function owns(uid) {
+      return request.auth != null && request.auth.uid == uid;
     }
+    function resourceOwner(uid) {
+      return owns(uid) && request.auth.token.siteAdmin == true
+        && request.auth.token.email_verified == true;
+    }
+    function validProgress(data) {
+      return data.keys().hasAll(['version','payload','savedAt'])
+        && data.keys().hasOnly(['version','payload','savedAt'])
+        && data.version is int && data.version >= 1
+        && data.savedAt == request.time
+        && data.payload is map
+        && data.payload.keys().hasAll(['progress','reviews','prefs','modified'])
+        && data.payload.keys().hasOnly(['progress','reviews','prefs','modified'])
+        && data.payload.progress is map && data.payload.progress.size() <= 1000
+        && data.payload.reviews is list && data.payload.reviews.size() <= 2000
+        && data.payload.prefs is map
+        && data.payload.modified is number;
+    }
+    match /users/{uid}/state/main {
+      allow get: if owns(uid);
+      allow list, delete: if false;
+      allow create: if owns(uid) && validProgress(request.resource.data)
+        && request.resource.data.version == 1;
+      allow update: if owns(uid) && validProgress(request.resource.data)
+        && request.resource.data.version == resource.data.version + 1;
+    }
+    match /users/{uid}/resources/{resourceId} {
+      function validResource(data) {
+        return data.keys().hasAll(['title','url','note','updatedAt'])
+          && data.keys().hasOnly(['title','url','note','updatedAt'])
+          && data.title is string && data.title.size() > 0 && data.title.size() <= 160
+          && data.url is string && data.url.size() <= 2048
+          && (data.url == '' || data.url.matches('^https://.+'))
+          && data.note is string && data.note.size() <= 20000
+          && data.updatedAt == request.time;
+      }
+      allow get: if resourceOwner(uid);
+      allow list: if resourceOwner(uid) && request.query.limit != null && request.query.limit <= 100;
+      allow create, update: if resourceOwner(uid) && validResource(request.resource.data);
+      allow delete: if resourceOwner(uid);
+    }
+    match /{document=**} { allow read, write: if false; }
   }
 }

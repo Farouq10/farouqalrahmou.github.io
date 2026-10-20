@@ -9,3 +9,7 @@ firebase-debug.*.log
 service-account*.json
 *-firebase-adminsdk-*.json
 coverage/
+
+# Emulator diagnostics
+firestore-debug.log
+firestore-debug.*.log
