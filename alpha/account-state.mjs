@@ -1,3 +1,4 @@
+import {cleanProblemLog} from './daily.mjs';
 // Guest progress keeps its original key. Accounts never inherit guest/other-user data.
 export const GUEST_KEY = 'tessera-progress-v1';
 export const storageKey = uid => uid ? `alpha-user-v2:${uid}` : GUEST_KEY;
@@ -12,6 +13,8 @@ export function cleanState(value, defaults, validIds, deckIds) {
   next.prefs.selected = Array.isArray(p.selected) ? [...new Set(p.selected.filter(id => deckIds.has(id)))] : [...defaults.prefs.selected];
   next.prefs.examDate = typeof p.examDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(p.examDate) ? p.examDate : '';
   if(deckIds.has(p.timelineDeck)) next.prefs.timelineDeck = p.timelineDeck;
+  next.prefs.problemLog=cleanProblemLog(p.problemLog);
+  next.prefs.readArticles=Array.isArray(p.readArticles)?[...new Set(p.readArticles.filter(id=>typeof id==='string'&&/^[a-z0-9-]{1,80}$/.test(id)))].slice(-100):[];
   next.modified = Number.isFinite(value.modified) ? value.modified : 0;
   return next;
 }

@@ -1,4 +1,4 @@
-/* Tessera date decks: independently written compact recall cues. */
+// Existing card IDs are stable across editorial corrections.
 export const HISTORY = [
   {
     "id": "history-medicine",
@@ -16,10 +16,10 @@ export const HISTORY = [
       },
       {
         "id": "history-medicine-2",
-        "front": "When? Black Death reached England",
-        "back": "1348–49 — Mass mortality challenged but did not displace prevailing explanations.",
+        "front": "When? Black Death first reached England",
+        "back": "1348 — The first outbreak spread through England in 1348–49; contemporary explanations did not identify the bacterial cause.",
         "topic": "Timeline",
-        "date": "1348–49",
+        "date": "1348",
         "weight": 3
       },
       {
@@ -225,7 +225,7 @@ export const HISTORY = [
       {
         "id": "history-medicine-30",
         "front": "When? Second major Public Health Act passed",
-        "back": "1875 — Made local sanitation provision and officers more systematic.",
+        "back": "1875 — Consolidated public-health law and made local sanitation duties, including water supply, drainage and nuisance control, more systematic and compulsory.",
         "topic": "Timeline",
         "date": "1875",
         "weight": 3
@@ -776,10 +776,10 @@ export const HISTORY = [
       },
       {
         "id": "history-germany-46",
-        "front": "When? Gestapo placed under Himmler's control",
-        "back": "1936 — Police terror became increasingly coordinated.",
+        "front": "When? Himmler appointed Chief of German Police",
+        "back": "17 Jun 1936 — Unified police authority under the SS leader; he had already gained control of political police forces, including the Gestapo, by 1934.",
         "topic": "Timeline",
-        "date": "1936",
+        "date": "17 Jun 1936",
         "weight": 2
       },
       {
@@ -1289,7 +1289,7 @@ export const HISTORY = [
       {
         "id": "history-elizabeth-8",
         "front": "When? Mary Queen of Scots returned to Scotland",
-        "back": "1561 — Created a potential Catholic alternative to Elizabeth.",
+        "back": "1561 — Returned as a Catholic queen to predominantly Protestant Scotland; her potential claim to Elizabeth’s throne already existed.",
         "topic": "Timeline",
         "date": "1561",
         "weight": 3
@@ -1520,8 +1520,8 @@ export const HISTORY = [
       },
       {
         "id": "history-elizabeth-37",
-        "front": "When? Walter Raleigh sponsored Roanoke expedition",
-        "back": "1584 — An early attempt at English North American colonisation.",
+        "front": "When? Raleigh sent Amadas and Barlowe on a reconnaissance voyage to Roanoke",
+        "back": "1584 — They assessed the region before the first English colony was established in 1585; Raleigh sponsored the voyage rather than accompanying it.",
         "topic": "Timeline",
         "date": "1584",
         "weight": 2
@@ -1601,9 +1601,9 @@ export const HISTORY = [
       {
         "id": "history-elizabeth-47",
         "front": "When? Battle of Gravelines",
-        "back": "29 Jul 1588 — English attack and weather contributed to Armada's failure.",
+        "back": "8 Aug 1588 (Gregorian; 29 Jul Old Style) — English naval attacks off Gravelines prevented the Armada from restoring its position for the planned invasion.",
         "topic": "Timeline",
-        "date": "29 Jul 1588",
+        "date": "8 Aug 1588",
         "weight": 2
       },
       {
@@ -1625,9 +1625,9 @@ export const HISTORY = [
       {
         "id": "history-elizabeth-50",
         "front": "When? English fireships broke up the Spanish Armada formation",
-        "back": "Jul 1588 — Fireships at Calais scattered the fleet before Gravelines.",
+        "back": "7 Aug 1588 (Gregorian; 28 Jul Old Style) — Fireships sent into the fleet at Calais scattered its formation before the Battle of Gravelines.",
         "topic": "Timeline",
-        "date": "Jul 1588",
+        "date": "7 Aug 1588",
         "weight": 2
       }
     ]

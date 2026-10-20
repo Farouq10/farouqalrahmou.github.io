@@ -1,0 +1,829 @@
+[
+  {
+    "id": "poetry-1",
+    "front": "Ozymandias — What central argument does Shelley make?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-2",
+    "front": "Ozymandias — How does the broken statue function symbolically?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-3",
+    "front": "Ozymandias — Why is the framed traveller's voice effective?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The traveller’s report and the inscription place the ruler inside other people’s narratives. He can proclaim authority but cannot control the ruined evidence or the reader’s final judgement."
+  },
+  {
+    "id": "poetry-4",
+    "front": "Ozymandias — What does 'colossal wreck' suggest?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The phrase brings monumental size into contact with ruin: even the wreck is immense. It is safer to analyse this tension than to insist that size and destruction form a strict oxymoron."
+  },
+  {
+    "id": "poetry-5",
+    "front": "Ozymandias — What does the surrounding desert signify?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-6",
+    "front": "Ozymandias — Useful comparison with My Last Duchess?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Shelley exposes a ruler through the ruins of his monument; Browning lets a living ruler expose himself through apparently controlled speech. Both turn attempted self-display into evidence against male authority."
+  },
+  {
+    "id": "poetry-7",
+    "front": "Ozymandias — Useful comparison with London?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Shelley reveals political domination as temporary when measured against time and landscape; Blake presents institutional oppression as active and reproducible in everyday city life."
+  },
+  {
+    "id": "poetry-8",
+    "front": "London — What is Blake's central attack?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-9",
+    "front": "London — Why repeat 'every'?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-10",
+    "front": "London — What do 'mind-forg'd manacles' imply?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The metaphor suggests that social constraint can become internalised in thought. Blake therefore attacks more than physical imprisonment: institutions also shape what people imagine is possible."
+  },
+  {
+    "id": "poetry-11",
+    "front": "London — How does the regular form matter?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Regular quatrains and repeated verbal patterns can enact restriction and recurrent suffering. The form supports Blake’s critique, but regularity alone does not prove that every institution controls the speaker."
+  },
+  {
+    "id": "poetry-12",
+    "front": "London — Why is the speaker's walk significant?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-13",
+    "front": "London — How does Blake connect church and inequality?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Blake places the Church beside the suffering child it ought to protect. This contrast makes institutional religious authority appear compromised by its failure of practical compassion."
+  },
+  {
+    "id": "poetry-14",
+    "front": "London — Comparison with Checking Out Me History?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-15",
+    "front": "The Prelude — What shifts in the speaker's encounter with nature?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The child begins with pleasure and apparent mastery, then encounters a scale he cannot control or fully understand. The adult narrator presents the resulting disturbance as a formative change in perception."
+  },
+  {
+    "id": "poetry-16",
+    "front": "The Prelude — Why is the rowing episode a narrative turning point?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The mountain interrupts the rowing episode’s confidence: scenery appears to acquire agency and the child retreats. The external encounter continues inwardly after the boat has been returned."
+  },
+  {
+    "id": "poetry-17",
+    "front": "The Prelude — How does the 'huge peak' function?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-18",
+    "front": "The Prelude — Why use blank verse?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Unrhymed iambic pentameter provides a sustained reflective movement; enjambment carries action and thought beyond individual lines. Variations and interruption matter more than simply calling the verse natural speech."
+  },
+  {
+    "id": "poetry-19",
+    "front": "The Prelude — How does retrospective narration work?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The remembered child undergoes fear, while the adult narrator gives the episode shape and significance. Distinguishing these perspectives prevents the child’s immediate reaction from becoming the poem’s whole interpretation."
+  },
+  {
+    "id": "poetry-20",
+    "front": "The Prelude — Comparison with Storm on the Island?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Wordsworth makes visible physical scale transform an individual consciousness; Heaney makes an unseen force unsettle communal preparedness. Both expose limited control, but their kinds of uncertainty differ."
+  },
+  {
+    "id": "poetry-21",
+    "front": "The Prelude — Comparison with Ozymandias?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-22",
+    "front": "My Last Duchess — What is the speaker's underlying motive?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-23",
+    "front": "My Last Duchess — Why is dramatic monologue important?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The Duke monopolises the conversation, yet details and digressions reveal the possessiveness he treats as reasonable. Browning allows the reader to judge the speaker without a separate moral commentator."
+  },
+  {
+    "id": "poetry-24",
+    "front": "My Last Duchess — How does the portrait symbolise power?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-25",
+    "front": "My Last Duchess — What is the importance of the silent listener?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The envoy’s unheard responses make the encounter unequal, but the marriage negotiation gives the Duke a reason to advertise rank and control. His speech becomes both persuasion and inadvertent self-exposure."
+  },
+  {
+    "id": "poetry-26",
+    "front": "My Last Duchess — What does enjambment convey?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Enjambment and conversational interruptions work against tightly rhyming couplets. The tension can reveal strain within the Duke’s performance of control; it should not be reduced to either perfect calm or complete loss of control."
+  },
+  {
+    "id": "poetry-27",
+    "front": "My Last Duchess — Why is the final sculpture significant?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-28",
+    "front": "My Last Duchess — Comparison with Ozymandias?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The Duke and Ozymandias try to direct another person’s judgement through art and self-display. Their representations instead preserve evidence of the coercive attitudes they wish to celebrate."
+  },
+  {
+    "id": "poetry-29",
+    "front": "The Charge of the Light Brigade — What creates collective momentum?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-30",
+    "front": "The Charge of the Light Brigade — How are soldiers represented?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Tennyson honours the soldiers’ courage while acknowledging that the order was mistaken. Distinguishing the men’s sacrifice from their commanders’ judgement prevents commemoration from becoming simple approval of the campaign."
+  },
+  {
+    "id": "poetry-31",
+    "front": "The Charge of the Light Brigade — Why is repetition effective?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-32",
+    "front": "The Charge of the Light Brigade — Why is the commander's mistake significant?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-33",
+    "front": "The Charge of the Light Brigade — How does ballad form influence response?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The driving rhythm and patterned repetition make the charge memorable and publicly commemorative. A ballad-like quality matters because the poem preserves collective courage after a disastrous action."
+  },
+  {
+    "id": "poetry-34",
+    "front": "The Charge of the Light Brigade — Comparison with Bayonet Charge?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Tennyson turns a disastrous charge into public commemoration of collective courage; Hughes isolates a soldier whose panic makes patriotic ideals feel inadequate to the bodily experience of battle."
+  },
+  {
+    "id": "poetry-35",
+    "front": "The Charge of the Light Brigade — Comparison with Exposure?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Tennyson’s movement and commands make sacrifice intensely active; Owen’s recurrent waiting denies soldiers even the clarity of decisive action. Both expose costs of war, but organise those costs through opposite temporal patterns."
+  },
+  {
+    "id": "poetry-36",
+    "front": "Exposure — What is Owen's central criticism?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-37",
+    "front": "Exposure — How does returning refrain shape the poem?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The recurring refrain repeatedly cancels the prospect of progress. Waiting becomes an ordeal in its own right, although the poem reveals that deterioration and death continue beneath apparent inaction."
+  },
+  {
+    "id": "poetry-38",
+    "front": "Exposure — Why is the weather personified?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-39",
+    "front": "Exposure — How do half-rhymes affect the reader?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Pararhyme keeps consonantal patterns while disturbing the expected vowel harmony. This partial agreement creates an unsettled sound appropriate to endurance without satisfying resolution."
+  },
+  {
+    "id": "poetry-40",
+    "front": "Exposure — Why is waiting structurally important?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-41",
+    "front": "Exposure — Comparison with Remains?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Owen presents collective suffering through prolonged waiting; Armitage makes a single violent encounter recur in one soldier’s civilian life. Stalled time contrasts with memory that cannot be confined to the past."
+  },
+  {
+    "id": "poetry-42",
+    "front": "Exposure — Comparison with Storm on the Island?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-43",
+    "front": "Storm on the Island — What is Heaney's main tension?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-44",
+    "front": "Storm on the Island — How does the opening tone affect the ending?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The opening assertion of preparedness is tested by the storm and qualified by the ending’s uncertainty. Practical resilience remains real, but it cannot guarantee psychological security."
+  },
+  {
+    "id": "poetry-45",
+    "front": "Storm on the Island — How does collective first-person voice work?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-46",
+    "front": "Storm on the Island — Why is the blank verse effective?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Blank verse and a conversational address make the communal speaker initially sound assured and practical. The same voice must gradually articulate a threat that its preparations cannot make fully comprehensible."
+  },
+  {
+    "id": "poetry-47",
+    "front": "Storm on the Island — What makes the enemy paradoxical?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-48",
+    "front": "Storm on the Island — Comparison with The Prelude?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Wordsworth’s visible mountain overturns a child’s confidence and leaves an inward legacy. Heaney’s invisible storm destabilises a community’s claims of preparedness without producing a final explanation that resolves the threat."
+  },
+  {
+    "id": "poetry-49",
+    "front": "Storm on the Island — Comparison with Exposure?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Owen links hostile weather to the soldiers’ military situation and prolonged abandonment; Heaney tests a community’s confidence in domestic preparedness. Similar weather imagery serves different social experiences."
+  },
+  {
+    "id": "poetry-50",
+    "front": "Bayonet Charge — What is the soldier's emotional progression?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-51",
+    "front": "Bayonet Charge — How does opening in medias res function?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-52",
+    "front": "Bayonet Charge — How does broken syntax shape meaning?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Enjambment, pauses and syntactic interruption disrupt smooth forward movement. The soldier’s body keeps running while his thoughts falter over what his action means."
+  },
+  {
+    "id": "poetry-53",
+    "front": "Bayonet Charge — How are patriotic abstractions treated?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-54",
+    "front": "Bayonet Charge — Why focus on the hare?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-55",
+    "front": "Bayonet Charge — Comparison with Charge of the Light Brigade?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Hughes shows a soldier’s bodily fear making patriotic ideals inadequate; Tennyson publicly honours soldiers who obey despite a mistaken order. The difference is psychological focus versus collective commemoration, not failure versus victory."
+  },
+  {
+    "id": "poetry-56",
+    "front": "Bayonet Charge — Comparison with Remains?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-57",
+    "front": "Remains — What is the poem's central movement?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-58",
+    "front": "Remains — What is the effect of conversational voice?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The colloquial opening makes killing sound like routine shared work. As the account becomes more personal and insistent, that ordinary register exposes rather than contains the speaker’s psychological damage."
+  },
+  {
+    "id": "poetry-59",
+    "front": "Remains — Why is uncertainty about the victim significant?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The speaker cannot establish whether the looter posed a threat. Repeated uncertainty makes the justification remain unsettled, so later recollection becomes an unresolved moral interrogation."
+  },
+  {
+    "id": "poetry-60",
+    "front": "Remains — How does repetition reveal trauma?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Repetition returns the soldier to the unresolved encounter despite physical distance from it. The poem’s movement into civilian life fails to produce a corresponding escape from memory."
+  },
+  {
+    "id": "poetry-61",
+    "front": "Remains — Why is the shift from past to present meaningful?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The later present tense makes the killing psychologically current after the deployment ends. Changing setting cannot restore a secure boundary between the remembered event and the speaker’s present life."
+  },
+  {
+    "id": "poetry-62",
+    "front": "Remains — Comparison with War Photographer?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Both speakers carry images of suffering beyond the conflict zone. The soldier is implicated in causing death, while the photographer struggles with witnessing, representation and a distant audience’s limited response."
+  },
+  {
+    "id": "poetry-63",
+    "front": "Remains — Comparison with Poppies?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-64",
+    "front": "Poppies — Whose perspective gives the poem its power?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "A mother recalls her son’s departure through intimate domestic detail. Her continuing attachment gives public conflict a private emotional cost; the poem does not conclusively establish that her son has died."
+  },
+  {
+    "id": "poetry-65",
+    "front": "Poppies — How is domestic imagery transformed?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The mother’s attention to clothing and touch turns everyday care into an attempt to hold onto a relationship during separation. Such imagery can suggest mourning without proving the son’s death."
+  },
+  {
+    "id": "poetry-66",
+    "front": "Poppies — What does the poppy symbol communicate?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-67",
+    "front": "Poppies — How does temporal movement affect meaning?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The mother moves between the departure, earlier childhood memories and later remembrance. Emotional association displaces a simple chronology, allowing separation to remain present rather than become a finished event."
+  },
+  {
+    "id": "poetry-68",
+    "front": "Poppies — Why is the child's departure significant?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The mother’s loving preparation enables the departure that she fears. Domestic care therefore expresses both support for the son’s independence and resistance to losing her former closeness with him."
+  },
+  {
+    "id": "poetry-69",
+    "front": "Poppies — Comparison with War Photographer?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-70",
+    "front": "Poppies — Comparison with Remains?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-71",
+    "front": "War Photographer — What central moral conflict shapes the poem?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-72",
+    "front": "War Photographer — How does darkroom ritual affect tone?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The darkroom’s orderly process contains and develops images of chaotic suffering. The contrast questions whether professional routine can organise the photographer’s emotional burden as neatly as the photographs themselves."
+  },
+  {
+    "id": "poetry-73",
+    "front": "War Photographer — Why use religious imagery?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-74",
+    "front": "War Photographer — What is the irony of readers' reactions?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The readers’ brief distress fits comfortably inside their ordinary leisure. Duffy exposes a gap between consuming images compassionately for a moment and sustaining responsibility for the suffering represented."
+  },
+  {
+    "id": "poetry-75",
+    "front": "War Photographer — How do regular stanzas function?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Four equal six-line stanzas and patterned rhyme impose order on disturbing material. This formal containment can resemble professional discipline while revealing how inadequately such order resolves the photographer’s memories."
+  },
+  {
+    "id": "poetry-76",
+    "front": "War Photographer — Comparison with Remains?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-77",
+    "front": "War Photographer — Comparison with London?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-78",
+    "front": "Tissue — What is the power of paper as a metaphor?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Paper carries maps, financial records and personal histories, but remains fragile and permeable. Dharker tests forms of control against the vulnerability and interdependence of the lives those documents organise."
+  },
+  {
+    "id": "poetry-79",
+    "front": "Tissue — How does light shape the poem's argument?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-80",
+    "front": "Tissue — Why are maps and documents mentioned?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-81",
+    "front": "Tissue — How does the free-verse structure matter?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Free verse and enjambment let meaning travel beyond fixed line boundaries. They support the poem’s interest in permeability, without making the poem structureless or implying that every boundary is simply evil."
+  },
+  {
+    "id": "poetry-82",
+    "front": "Tissue — Why does the focus move towards the body?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The movement towards skin makes fragility a condition of living bodies, not only documents. Rather than finding security in permanence, the poem imagines a more open relation to impermanence and other people."
+  },
+  {
+    "id": "poetry-83",
+    "front": "Tissue — Comparison with Ozymandias?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-84",
+    "front": "Tissue — Comparison with The Emigrée?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-85",
+    "front": "The Emigrée — How does memory shape the homeland?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-86",
+    "front": "The Emigrée — What is the role of sunlight?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-87",
+    "front": "The Emigrée — How does first-person voice influence reliability?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The speaker’s emotional conviction makes attachment persuasive, but the childhood perspective can idealise what it remembers. Political oppression and personal belonging remain in tension rather than cancelling one another."
+  },
+  {
+    "id": "poetry-88",
+    "front": "The Emigrée — What does personification of the city achieve?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-89",
+    "front": "The Emigrée — What tension governs the poem?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-90",
+    "front": "The Emigrée — Comparison with Checking Out Me History?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-91",
+    "front": "The Emigrée — Comparison with London?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Blake’s walking speaker exposes a city’s present institutional oppression; Rumens’s displaced speaker preserves an emotionally luminous remembered city against hostile accounts. One investigates place, while the other defends a remembered relation to it."
+  },
+  {
+    "id": "poetry-92",
+    "front": "Checking Out Me History — What is Agard's central challenge?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-93",
+    "front": "Checking Out Me History — How do contrasting sections work?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The repeated account of imposed schooling contrasts with differently shaped celebrations of neglected figures. The structural alternation makes reclaiming history an active challenge to the curriculum’s authority."
+  },
+  {
+    "id": "poetry-94",
+    "front": "Checking Out Me History — Why use non-standard phonetic spelling?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Caribbean Creole patterns assert the speaker’s own linguistic identity against the authority of imposed schooling. Describe this as a deliberate voice, not as defective English or merely incorrect spelling."
+  },
+  {
+    "id": "poetry-95",
+    "front": "Checking Out Me History — What is the effect of a refrain?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-96",
+    "front": "Checking Out Me History — Why is individual naming important?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-97",
+    "front": "Checking Out Me History — Comparison with London?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-98",
+    "front": "Checking Out Me History — Comparison with The Emigrée?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poetry-99",
+    "front": "Kamikaze — How does the pilot's journey change?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The pilot returns from a mission expected to end in death. The daughter imagines how natural beauty and childhood memory might have altered his purpose; the poem does not directly reveal his reasoning."
+  },
+  {
+    "id": "poetry-100",
+    "front": "Kamikaze — Why is natural imagery central?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The daughter’s imagined account places living sea creatures and childhood experience against the mission’s abstract duty. Nature can suggest a renewed attachment to life, but this motive remains reconstructed rather than confirmed."
+  },
+  {
+    "id": "poetry-101",
+    "front": "Kamikaze — How does family testimony complicate truth?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The father’s experience reaches the reader through the daughter’s account and its transmission to another generation. His absent direct voice limits certainty and shows how a family can control a survivor’s story."
+  },
+  {
+    "id": "poetry-102",
+    "front": "Kamikaze — What does the family's silence represent?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The family’s withdrawal of recognition turns military shame into an enduring domestic punishment. His biological survival does not secure belonging, and the children learn to reproduce the adults’ rejection."
+  },
+  {
+    "id": "poetry-103",
+    "front": "Kamikaze — What is the closing paradox?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "The ending measures physical death against a life stripped of social recognition. It questions a code of honour that can make returning alive resemble another form of destruction."
+  },
+  {
+    "id": "poetry-104",
+    "front": "Kamikaze — Comparison with The Charge of the Light Brigade?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Tennyson commemorates soldiers who obey a fatal order while acknowledging command error; Garland examines the family punishment of a man who returns. Both complicate duty, but distribute honour and blame differently."
+  },
+  {
+    "id": "poetry-105",
+    "front": "Kamikaze — Comparison with Poppies?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review. Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it.",
+    "back": "Both place warfare inside family relationships. Weir’s mother sustains love across separation, while Garland shows a family making belonging conditional on obedience to a destructive public code."
+  },
+  {
+    "id": "poem-extra-1",
+    "front": "Ozymandias — Complete Shelley's warning: 'Look on my Works, ye Mighty, and ___!'",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-2",
+    "front": "London — Complete Blake's metaphor: 'mind-forg'd ___'",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-3",
+    "front": "The Prelude — What short phrase makes the mountain seem immense and threatening?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-4",
+    "front": "My Last Duchess — Complete the Duke's chilling admission: 'I gave ___'",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-5",
+    "front": "The Charge of the Light Brigade — Complete: 'Theirs not to reason ___'",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-6",
+    "front": "Exposure — Complete the refrain: 'But nothing ___'",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-7",
+    "front": "Storm on the Island — What is the poem's short paradoxical ending image?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-8",
+    "front": "Bayonet Charge — What is disrupted when the soldier questions patriotic slogans?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-9",
+    "front": "Remains — What four-word phrase keeps the soldier uncertain?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-10",
+    "front": "Poppies — What is the role of paper poppies on the clothing?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-11",
+    "front": "War Photographer — Which compact image makes photographs into suffering?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-12",
+    "front": "Tissue — What is paper contrasted with?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-13",
+    "front": "The Emigrée — What recurring image protects an idealised homeland?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-14",
+    "front": "Checking Out Me History — Which recurring phrase evokes official indoctrination?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "poem-extra-15",
+    "front": "Kamikaze — What phrase frames the pilot's expected fate?",
+    "reason": "Make the poem explicit so this prompt is unambiguous in mixed review."
+  },
+  {
+    "id": "aic-1",
+    "back": "The Inspector makes responsibility collective: legal innocence cannot erase the harm caused by ordinary economic and personal choices. His interrogation connects actions that each character tries to treat separately.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-3",
+    "back": "Sheila changes from exercising consumer power over Eva to challenging her parents’ excuses. Priestley makes her development demonstrate that recognising complicity can produce ethical independence.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-5",
+    "back": "The warning expands one household’s wrongdoing into a social danger. Post-war audiences could connect its violent imagery with the collective suffering produced when societies refuse solidarity.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-7",
+    "back": "The final call repeats the prospect of an investigation after the older Birlings celebrate their escape. This circular movement tests whether responsibility depends on punishment or on conscience.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-14",
+    "back": "Eva remains offstage while privileged characters control the account of her life. The audience must reconstruct her suffering through the very people whose choices helped to create it.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-19",
+    "back": "The audience knows the Titanic sank, so Birling’s certainty discredits his judgement before the Inspector challenges his politics. Dramatic irony makes economic authority look unreliable rather than automatically wise.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-20",
+    "back": "Post-war audiences know Birling’s prediction is disastrously wrong. Priestley transfers that distrust from his confident forecasting to his confident individualism.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it. Avoid implying that the relevant British audience saw the play in 1945.",
+    "front": "An Inspector Calls — What is the effect of Birling's prediction about war?",
+    "source": "https://jbpriestley.co.uk/2019/10/09/an-inspector-has-come/"
+  },
+  {
+    "id": "aic-23",
+    "back": "The shift from flattering domestic lighting to a harsher light turns private comfort into public scrutiny. The family loses control over how its respectability is presented.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-25",
+    "back": "Eric’s admission that his father is unapproachable exposes the failure beneath Birling’s paternal authority. Later, Eric insists that their wrongdoing survives the collapse of the Inspector’s official identity.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-27",
+    "back": "Sheila and Eric accept responsibility, but Gerald joins the older Birlings’ relief over the possible hoax. Priestley associates youth with potential change, not automatic moral superiority.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-31",
+    "back": "Eric describes forcing entry when Eva wanted him to leave and then using stolen money to support her. His confession exposes coercion and privilege; remorse does not cancel the original harm.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-34",
+    "back": "Sheila converts personal insecurity into economic punishment because a customer’s complaint can cost a worker her job. Priestley exposes how class power lets wounded vanity become material harm.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-39",
+    "back": "The bodily metaphor makes society interdependent: damage to one member concerns the whole. It directly opposes Birling’s belief that private interests can be morally self-contained.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-40",
+    "back": "The world wars give the Inspector’s warning retrospective force for post-war audiences. His demand for solidarity also speaks to debates about collective welfare and social reconstruction.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it. Use accurate post-war reception language.",
+    "front": "Why does the Inspector's warning carry force for post-war audiences?",
+    "source": "https://jbpriestley.co.uk/"
+  },
+  {
+    "id": "aic-42",
+    "back": "Sheila accepts that her jealousy helped to cost Eva her job and recognises that she abused her influence. Her acknowledgement begins a sustained change, rather than merely ending the interrogation.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-48",
+    "back": "Mrs Birling demands punishment for the unborn child’s father before recognising Eric’s involvement. Her absolute judgement turns back upon her own family and exposes selective moral standards.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-53",
+    "back": "Gerald’s assistance materially helps Daisy, but her security depends upon his wealth and continuing interest. The benefit complicates his guilt without making their relationship equal or permanent.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-55",
+    "back": "Priestley gives Eva decisive moral importance while withholding a stage presence and direct testimony. Her absence exposes the distance between privileged conversation and the working lives it can destroy.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-60",
+    "back": "The 1912 setting lets post-war audiences judge Birling with knowledge he lacks. His misplaced predictions weaken the authority of the social order that he presents as secure and reasonable.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it. The first Soviet performance was in 1945; British première 1946. The comparison should not misdate the British audience.",
+    "front": "Why does Priestley set the play before the world wars for a post-war audience?",
+    "source": "https://jbpriestley.co.uk/2019/10/09/an-inspector-has-come/"
+  },
+  {
+    "id": "aic-61",
+    "back": "Keeping the action in the dining room traps the family within an escalating moral examination. The setting’s apparent security becomes confinement as further revelations dismantle their respectable self-image.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-62",
+    "back": "The linked revelations move through employment, consumer power, sexual dependence and charity. Their sequence prevents each character’s wrongdoing from remaining an isolated private incident.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-63",
+    "back": "The call announces a real death and a police inspector’s arrival just as the older Birlings relax. The twist exposes their relief as premature and reopens the demand for accountability.",
+    "reason": "Replace a generic or reductive answer with a specific method-to-argument explanation and preserve uncertainty where the text requires it."
+  },
+  {
+    "id": "aic-21",
+    "front": "Why does the 1912 setting matter for post-war audiences?",
+    "back": "Post-war audiences know that Birling’s pre-war certainties will collapse. Their historical hindsight makes his confidence in class hierarchy and private self-interest appear dangerously complacent.",
+    "reason": "Distinguish the 1912 setting from the post-war reception rather than treating 1945 as the British première.",
+    "source": "https://jbpriestley.co.uk/"
+  },
+  {
+    "id": "history-germany-46",
+    "front": "When? Himmler appointed Chief of German Police",
+    "back": "17 Jun 1936 — Unified police authority under the SS leader; he had already gained control of political police forces, including the Gestapo, by 1934.",
+    "date": "17 Jun 1936",
+    "reason": "Correct conflation of Himmler’s earlier Gestapo control with his 1936 appointment over German police.",
+    "source": "https://encyclopedia.ushmm.org/content/en/article/heinrich-himmler"
+  },
+  {
+    "id": "history-medicine-2",
+    "front": "When? Black Death first reached England",
+    "back": "1348 — The first outbreak spread through England in 1348–49; contemporary explanations did not identify the bacterial cause.",
+    "date": "1348",
+    "reason": "The question asks arrival, not the full outbreak range.",
+    "source": "https://www.english-heritage.org.uk/visit/places/boxgrove-priory/history/"
+  },
+  {
+    "id": "history-medicine-30",
+    "back": "1875 — Consolidated public-health law and made local sanitation duties, including water supply, drainage and nuisance control, more systematic and compulsory.",
+    "reason": "Make the governmental change concrete rather than merely saying sanitation became systematic.",
+    "source": "https://hansard.parliament.uk/commons/1875-02-11/debates/bb62177f-611e-44f4-b7e1-c5c91a3ed2da/PublicHealthBill"
+  },
+  {
+    "id": "history-elizabeth-8",
+    "back": "1561 — Returned as a Catholic queen to predominantly Protestant Scotland; her potential claim to Elizabeth’s throne already existed.",
+    "reason": "Returning to Scotland did not create her dynastic English claim.",
+    "source": "https://www.royal.uk/mary-queen-scots-r1542-1567"
+  },
+  {
+    "id": "history-elizabeth-37",
+    "front": "When? Raleigh sent Amadas and Barlowe on a reconnaissance voyage to Roanoke",
+    "back": "1584 — They assessed the region before the first English colony was established in 1585; Raleigh sponsored the voyage rather than accompanying it.",
+    "reason": "Distinguish reconnaissance from actual settlement and Raleigh’s sponsorship from participation.",
+    "source": "https://www.nps.gov/fora/learn/historyculture/1584-the-first-english-voyage.htm"
+  },
+  {
+    "id": "history-elizabeth-47",
+    "back": "8 Aug 1588 (Gregorian; 29 Jul Old Style) — English naval attacks off Gravelines prevented the Armada from restoring its position for the planned invasion.",
+    "date": "8 Aug 1588",
+    "reason": "Clarify calendar conventions so 29 July and 8 August are not learnt as contradictory battles.",
+    "source": "https://www.rmg.co.uk/collections/objects/rmgc-object-542820"
+  },
+  {
+    "id": "history-elizabeth-50",
+    "back": "7 Aug 1588 (Gregorian; 28 Jul Old Style) — Fireships sent into the fleet at Calais scattered its formation before the Battle of Gravelines.",
+    "date": "7 Aug 1588",
+    "reason": "Use the same calendar convention as the neighbouring Gravelines card.",
+    "source": "https://www.rmg.co.uk/collections/objects/rmgc-object-542831"
+  }
+]

@@ -1,10 +1,15 @@
 import {HISTORY} from './history.js';
 import {ENGLISH} from './english.js';
+import {ENRICHMENT} from './enrichment.js';
+import {ARTICLES} from './articles.js';
+import {PROBLEM_BANK} from './problem-bank.js';
+import {ukDate,setProblemStatus} from './daily.mjs';
+import {todayPreview,problemPage,readingIndex,articlePage} from './content-views.mjs';
 import {bootSync,isConfigured} from './sync.js';
 import {storageKey,readState,cleanState,maySave,safeResourceUrl} from './account-state.mjs';
-const DECKS=[...HISTORY,...ENGLISH], BYID=new Map(DECKS.flatMap(d=>d.cards.map(c=>[c.id,{...c,deckId:d.id,deckTitle:d.title,subject:d.subject}]))), ALL=[...BYID.values()];
+const DECKS=[...HISTORY,...ENGLISH,...ENRICHMENT], BYID=new Map(DECKS.flatMap(d=>d.cards.map(c=>[c.id,{...c,deckId:d.id,deckTitle:d.title,subject:d.subject}]))), ALL=[...BYID.values()];
 const IDS=new Set(BYID.keys()), DECK_IDS=new Set(DECKS.map(d=>d.id));
-const DEFAULT={version:1,progress:{},reviews:[],prefs:{retention:.9,newLimit:18,selected:DECKS.map(d=>d.id),examDate:''},modified:0};
+const DEFAULT={version:1,progress:{},reviews:[],prefs:{retention:.9,newLimit:18,selected:DECKS.map(d=>d.id),examDate:'',problemLog:{},readArticles:[]},modified:0};
 let activeUid=null, accountUser=null, syncing=null, cloudState='guest', syncTimer=null, saveChain=Promise.resolve(), toastTimer=null;
 let state=load(),session=null,current=null,flipped=false,certainty=null,shownAt=0,atlasQuery='',resourceItems=[],resourceState='idle',authMode='login';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
@@ -66,7 +71,10 @@ save();drawCard();render();
 }
 function heading(title,sub=''){return '<div class="page-heading"><h1>'+esc(title)+'</h1>'+(sub?'<p class="subtitle">'+esc(sub)+'</p>':'')+'</div>'}
 function deckRow(d){const due=dueCount(d.cards),started=learnedCount(d.cards);return '<button class="deck" data-open="'+esc(d.id)+'" aria-label="Study '+esc(d.title)+'"><span class="deck-subject">'+esc(d.subject)+'</span><span class="deck-name"><span class="deck-title">'+esc(d.title)+'</span><span class="deck-description">'+started+' of '+d.cards.length+' cards started</span></span><span class="deck-count">'+d.cards.length+' cards</span><span class="deck-due '+(due?'is-due':'')+'">'+(due?due+' due':started===d.cards.length?'Up to date':'Study')+'</span></button>'}
-function dashboard(){const cards=selectedCards(),due=dueCount(cards),fresh=cards.filter(c=>!pof(c)).length;return '<section class="study-summary"><div><h1>Study</h1><p>'+(due?due+' card'+(due===1?' is':'s are')+' due.':fresh?'Start with a few new cards.':'You’re up to date.')+'</p></div><button class="primary" data-start="">'+(due?'Review cards':'Start studying')+'</button></section><div class="counts"><span><strong>'+reviewsToday().length+'</strong> answered today</span><span><strong>'+learnedCount(cards)+' / '+cards.length+'</strong> cards started</span></div><div class="section-head"><h2>Your decks</h2><a href="#/library">Browse decks</a></div><div class="deck-list">'+DECKS.map(deckRow).join('')+'</div>'}
+function dashboard(){const cards=selectedCards(),due=dueCount(cards),fresh=cards.filter(c=>!pof(c)).length;return '<section class="study-summary"><div><h1>Study</h1><p>'+(due?due+' card'+(due===1?' is':'s are')+' due.':fresh?'Start with a few new cards.':'You’re up to date.')+'</p></div><button class="primary" data-start="">'+(due?'Review cards':'Start studying')+'</button></section><div class="counts"><span><strong>'+reviewsToday().length+'</strong> answered today</span><span><strong>'+learnedCount(cards)+' / '+cards.length+'</strong> cards started</span></div>'+todayPreview(PROBLEM_BANK)+'<div class="section-head"><h2>Your decks</h2><a href="#/library">Browse decks</a></div><div class="deck-list">'+DECKS.map(deckRow).join('')+'</div><section class="home-section"><div class="section-head"><h2>Reading</h2><a href="#/reading">All articles & resources</a></div><a class="featured-reading" href="#/reading/kamikaze"><strong>Kamikaze</strong><span>Duty, memory and the cost of coming home.</span></a></section>'}
+function problems(){const params=new URLSearchParams(location.hash.split('?')[1]||'');const n=Number(params.get('day'));return problemPage(PROBLEM_BANK,state.prefs,n||null)}
+function reading(){const part=location.hash.replace(/^#\/?/,'').split('?')[0].split('/')[1];let id='';try{id=decodeURIComponent(part||'')}catch{}return id?articlePage(ARTICLES,id,state.prefs):readingIndex(ARTICLES,state.prefs)}
+
 function library(){return heading('Decks',ALL.length+' cards across History and English.')+'<div class="toolbar"><input class="search" id="librarySearch" aria-label="Search decks" placeholder="Search decks"><select class="select" id="subjectFilter" aria-label="Subject"><option value="all">All subjects</option><option>History</option><option>English</option></select></div><div class="deck-list" id="libraryResults">'+DECKS.map(deckRow).join('')+'</div>'}
 function updateLibrary(){const q=$('#librarySearch').value.toLowerCase(),subject=$('#subjectFilter').value;$('#libraryResults').innerHTML=DECKS.filter(d=>(subject==='all'||d.subject===subject)&&(d.title+' '+d.description).toLowerCase().includes(q)).map(deckRow).join('')||'<p class="empty">No matching decks.</p>'}
 const ratings=['Impossible','No idea','Not quite','Easy','Very easy'];
@@ -88,7 +96,7 @@ function resources(){
 }
 function resourceRows(){if(resourceState==='loading')return '<p class="empty muted">Loading resources…</p>';if(resourceState==='error')return '<div class="empty"><p>Resources could not load.</p><button class="outline" data-action="reloadResources">Try again</button></div>';if(!resourceItems.length)return '<p class="empty muted">No resources yet. Add a link or note to open it at school.</p>';return resourceItems.map(r=>{const url=safeResourceUrl(r.url);return '<article class="resource"><h2>'+esc(r.title)+'</h2>'+(url?'<a class="resource-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(url)+'</a>':'')+(r.note?'<div class="resource-note">'+esc(r.note)+'</div>':'')+'<div class="actions"><button class="text-button danger" data-delete-resource="'+esc(r.id)+'">Delete</button></div></article>'}).join('')}
 async function loadResources(){if(!syncing?.isOwner())return;const uid=activeUid;resourceState='loading';if($('#resourceList'))$('#resourceList').innerHTML=resourceRows();try{const items=await syncing.resources();if(uid!==activeUid)return;resourceItems=items;resourceState='loaded'}catch{if(uid!==activeUid)return;resourceState='error'}if($('#resourceList'))$('#resourceList').innerHTML=resourceRows()}
-function render(){let r=route();const views={dashboard,library,review,timeline,insights,settings,resources};if(!views[r])r='dashboard';document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===r)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});document.title='Alpha — '+({dashboard:'Study',library:'Decks',timeline:'Dates',review:'Review',insights:'Activity',settings:'Settings',resources:'Resources'}[r]);$('#page').innerHTML=views[r]();updateAccount();if(r==='resources'&&resourceState==='idle')loadResources()}
+function render(){let r=route();const views={dashboard,library,review,timeline,insights,settings,resources,problems,reading};if(!views[r])r='dashboard';document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===r)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});document.title='Alpha — '+({dashboard:'Study',library:'Decks',timeline:'Dates',review:'Review',insights:'Activity',settings:'Settings',resources:'Private resources',problems:'Daily problems',reading:'Reading'}[r]);$('#page').innerHTML=views[r]();updateAccount();if(r==='resources'&&resourceState==='idle')loadResources()}
 function updateAccount(){const b=$('#authButton');b.textContent=accountUser?(accountUser.email?.split('@')[0]||'Account'):'Sign in';b.setAttribute('aria-label',accountUser?'Manage account for '+accountUser.email:'Sign in');$('#resourcesNav').hidden=!syncing?.isOwner();updateSaveStatus()}
 function connectState(api){syncing=api;updateAccount();if(accountUser && api.connected() && cloudState==='loaded'){if(state.modified>0)scheduleCloud()} }
 async function receiveSession(user,remote,status){
@@ -138,8 +146,19 @@ async function signOut(){
 function exportData(){const data={format:'alpha-v1',exportedAt:new Date().toISOString(),progress:state.progress,reviews:state.reviews,prefs:state.prefs};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download='alpha-backup-'+localDate()+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),2000)}
 async function receiveFile(file){if(!file)return;try{const data=JSON.parse(await file.text());if(!['alpha-v1','tessera-v1'].includes(data.format)||!data.progress||!Array.isArray(data.reviews))throw Error('Choose an Alpha progress backup.');if(!confirm('Replace progress for '+(accountUser?accountUser.email:'this guest session')+'? Export a backup first if needed.'))return;state=cleanState(data,DEFAULT,IDS,DECK_IDS);session=null;save();go('dashboard');toast('Progress imported.')}catch(e){toast(e.message)}}
 document.addEventListener('click',async e=>{
+  const anchor=e.target.closest('[data-article-anchor]');if(anchor){e.preventDefault();document.getElementById(anchor.dataset.articleAnchor)?.scrollIntoView?.({block:'start',behavior:'smooth'});return}
   const b=e.target.closest('button');if(!b||b.disabled)return;
   if(b.id==='authButton'){openAccount();return}
+  if(b.dataset.problemId){
+    if(!PROBLEM_BANK.some(p=>p.id===b.dataset.problemId))return;
+    state.prefs.problemLog=setProblemStatus(state.prefs.problemLog,b.dataset.problemDate,b.dataset.problemId,b.dataset.problemStatus);
+    b.parentElement.querySelectorAll('button').forEach(item=>item.setAttribute('aria-pressed',String(item===b)));save();return;
+  }
+  if(b.dataset.articleRead){
+    const id=b.dataset.articleRead;if(!ARTICLES.some(a=>a.id===id))return;
+    const set=new Set(state.prefs.readArticles||[]);if(set.has(id))set.delete(id);else set.add(id);state.prefs.readArticles=[...set];
+    b.setAttribute('aria-pressed',String(set.has(id)));b.textContent=set.has(id)?'Marked as read':'Mark as read';save();return;
+  }
   if(b.hasAttribute('data-open')){const id=b.dataset.open;state.prefs.selected=[...new Set([...state.prefs.selected,id])];save();createSession(id);return}
   if(b.hasAttribute('data-start')){const id=b.dataset.start;if(id&&!state.prefs.selected.includes(id)){state.prefs.selected.push(id);save()}createSession(id);return}
   if(b.hasAttribute('data-confidence')){certainty=Number(b.dataset.confidence);render();return}
@@ -175,9 +194,15 @@ document.addEventListener('submit',async e=>{
   }
 });
 document.addEventListener('input',e=>{const id=e.target.id,v=e.target.value;if(id==='retention'){state.prefs.retention=Number(v);$('#retentionValue').textContent=Math.round(Number(v)*100)+'%';save()}if(id==='newLimit'){state.prefs.newLimit=Math.max(0,Math.min(80,Math.floor(Number(v)||0)));save()}if(id==='examDate'){state.prefs.examDate=v;save()}if(id==='librarySearch')updateLibrary();if(id==='timelineSearch'){atlasQuery=v;$('#timelineList').innerHTML=timelineRows(state.prefs.timelineDeck||HISTORY[0].id,v)}});
-document.addEventListener('change',e=>{if(e.target.id==='subjectFilter')updateLibrary();if(e.target.id==='timelineDeck'){state.prefs.timelineDeck=e.target.value;save();$('#timelineList').innerHTML=timelineRows(e.target.value,atlasQuery)}if(e.target.hasAttribute('data-selectdeck')){const id=e.target.dataset.selectdeck;state.prefs.selected=e.target.checked?[...new Set([...state.prefs.selected,id])]:state.prefs.selected.filter(x=>x!==id);save()}});
+document.addEventListener('change',e=>{if(e.target.id==='problemDay'){location.hash=e.target.value==='today'?'#/problems':'#/problems?day='+e.target.value;return}if(e.target.id==='subjectFilter')updateLibrary();if(e.target.id==='timelineDeck'){state.prefs.timelineDeck=e.target.value;save();$('#timelineList').innerHTML=timelineRows(e.target.value,atlasQuery)}if(e.target.hasAttribute('data-selectdeck')){const id=e.target.dataset.selectdeck;state.prefs.selected=e.target.checked?[...new Set([...state.prefs.selected,id])]:state.prefs.selected.filter(x=>x!==id);save()}});
 $('#importFile').addEventListener('change',e=>{receiveFile(e.target.files[0]);e.target.value=''});
-window.addEventListener('hashchange',()=>{render();$('#page').focus()});
+window.addEventListener('hashchange',()=>{render();$('#page').focus();if(route()==='reading')window.scrollTo?.(0,0)});
+// Keep an already-open tab current at UK midnight. Archive selections stay put.
+let visibleUkDate=ukDate();
+function refreshDailyDate(){const next=ukDate();if(next!==visibleUkDate){visibleUkDate=next;if(route()==='dashboard'||(route()==='problems'&&!location.hash.includes('day=')))render()}}
+setInterval(refreshDailyDate,30000).unref?.();
+window.addEventListener('focus',refreshDailyDate);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshDailyDate()});
 window.addEventListener('keydown',e=>{if($('#accountDialog').open||['INPUT','TEXTAREA','SELECT','BUTTON','SUMMARY'].includes(document.activeElement.tagName)||route()!=='review'||!current)return;if(e.code==='Space'&&!flipped){e.preventDefault();flipped=true;render()}else if(flipped&&['1','2','3','4','5'].includes(e.key)){e.preventDefault();gradeCard(Number(e.key)-1)}});
 render();
 bootSync({onReady:connectState,onSession:receiveSession,onNotice:toast}).catch(error=>{console.warn('Sign-in unavailable:',error.code||error.message);toast('Sign-in could not connect. You can still study in this browser.')});

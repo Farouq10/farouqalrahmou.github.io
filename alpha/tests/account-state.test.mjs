@@ -32,3 +32,11 @@ test('corrupt storage yields a fresh state without mutating defaults',()=>{
 test('resource links allow HTTPS only, including when loading stored records',()=>{
  assert.equal(safeResourceUrl('javascript:alert(1)'),null);assert.equal(safeResourceUrl('data:text/html,hello'),null);assert.equal(safeResourceUrl('http://example.com'),null);assert.equal(safeResourceUrl('https://example.com'),'https://example.com/');assert.equal(safeResourceUrl(''),'');
 });
+
+test('daily and reading markers survive account restore without appearing in another account',()=>{
+ const s=storage();const value={...old,prefs:{...old.prefs,problemLog:{'2026-10-20|smc-2021-q22':'solved'},readArticles:['kamikaze','<script>']}};
+ s.setItem(storageKey('alice'),JSON.stringify(value));
+ const alice=readState(s,'alice',defaults,ids,decks),bob=readState(s,'bob',defaults,ids,decks);
+ assert.equal(alice.prefs.problemLog['2026-10-20|smc-2021-q22'],'solved');assert.deepEqual(alice.prefs.readArticles,['kamikaze']);
+ assert.equal(Object.keys(bob.prefs.problemLog||{}).length,0);assert.equal((bob.prefs.readArticles||[]).length,0);
+});

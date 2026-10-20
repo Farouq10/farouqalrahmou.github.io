@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/account-state.test.mjs tests/app.test.mjs",
+    "test": "node --test tests/account-state.test.mjs tests/daily.test.mjs tests/content.test.mjs tests/app.test.mjs",
     "test:firebase": "firebase emulators:exec --project demo-alpha --config firebase.json --only firestore,auth \"node --test --test-concurrency=1 tests/firestore.test.mjs tests/sync.test.mjs\""
   },
   "devDependencies": {

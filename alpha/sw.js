@@ -1,5 +1,5 @@
-const CACHE="alpha-static-v2";
-const CORE=["./","./index.html","./styles.css","./app.js","./history.js","./english.js","./sync.js","./firebase-config.js","./account-state.mjs","./icon.svg","./manifest.webmanifest"];
+const CACHE="alpha-static-v3";
+const CORE=["./","./index.html","./styles.css","./app.js","./history.js","./english.js","./sync.js","./firebase-config.js","./account-state.mjs","./daily.mjs","./content-views.mjs","./problem-bank.js","./articles.js","./enrichment.js","./icon.svg","./manifest.webmanifest"];
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()).catch(()=>{}));
 });

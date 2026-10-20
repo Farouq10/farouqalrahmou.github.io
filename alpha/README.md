@@ -46,3 +46,16 @@ ALPHA_TEST_MODULES=/path/to/dependencies/package.json firebase emulators:exec --
 ```
 
 The rules tests cover owner writes, cross-account/anonymous denials, revision conflicts, resource permissions, role escalation and unsafe links. DOM tests cover review, five ratings, saved progress, account transitions and private-route access. Full production Google sign-in and a visual browser check remain separate checks.
+
+## Daily problems and public reading (20 October 2026)
+
+- `problem-bank.js` stores 90 official references: 30 SMC selections, 30 BMO1 selections, and 30 harder BMO1/BMO2/EGMO selections. It does **not** embed copyrighted paper statements or copied solutions. Links open the official paper at the verified PDF page; 83 selections include an official solution source. The remaining seven explicitly say no verified free solution link is included.
+- `daily.mjs` rotates three selections at midnight in **Europe/London**, with a 30-day cycle starting 20 October 2026. Day 31 repeats day 1. The current bank is finite; it does not generate new questions indefinitely. The day selector makes all 30 sets browsable. See `problem-sources.md` for provenance and BMO academic-year conventions.
+- An open tab rechecks the UK date every 30 seconds and when it regains focus or visibility. Explicit archive browsing is not overridden.
+- Attempted/solved markers are stored per date and problem in `prefs.problemLog`, using the same account-isolated saving and backups as review progress. Reading markers use `prefs.readArticles`. Both fields are sanitised on import and login. Existing Firestore rules already permit this bounded preferences map, so this release does not require a rules change.
+- `articles.js` contains four original close readings: Kamikaze, The Prelude, Storm on the Island, and Remains compared with Exposure. Each includes a model paragraph, comparison routes, retrieval prompts and primary-text links. Modern poems are not republished. The articles and companion cards are cached with the public app shell for offline reading; official competition papers still require a connection.
+- `enrichment.js` adds 64 companion flashcards (472 total). Existing users keep their deck selections; opening a new companion deck adds it explicitly to their reviews.
+- All 408 original card IDs are retained. A targeted audit improves 150 original cards, including all 120 poetry prompts now naming their poem, 78 English answer improvements and seven History corrections/clarifications. `content-audit.md` and `card-corrections.json` record the scope and evidence. It is not a claim that every historical fact has been independently reverified.
+- No personal identity or additional private material was added in this release. Public reading is separate from the existing owner-only resources route.
+
+The fast checks include UK midnight/DST/month boundaries, all 90 unique problem references, exact retention of the 408 original IDs, companion-deck links, escaped article rendering, account transitions, imports and public/private routes. The selected runtime does not provide the browser-control skill, so visual browser QA is not claimed.
