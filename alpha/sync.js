@@ -4,7 +4,7 @@ import {firebaseConfig} from "./firebase-config.js";
   no flashcard text and no passwords. Firestore rules restrict reads/writes to
   the authenticated user's own document.
 */
-export async function bootSync({onReady,onRemote,onNotice}){
+export async function bootSync({onReady,onRemote,onEmptyCloud,onNotice}){
   if(!firebaseConfig?.apiKey||!firebaseConfig?.authDomain||!firebaseConfig?.projectId||!firebaseConfig?.appId)return null;
   const [appMod,authMod,dbMod]=await Promise.all([
     import("https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js"),
@@ -43,7 +43,7 @@ export async function bootSync({onReady,onRemote,onNotice}){
       rev=snapshot.exists()?snapshot.data().version||0:0;
       ready=true;onReady(api);
       if(snapshot.exists()&&snapshot.data().payload)await onRemote(snapshot.data().payload);
-      else onNotice("Google sync connected. New reviews will be saved to the cloud.");
+      else {onNotice("Google sync connected. Uploading local progress.");onEmptyCloud?.();}
     }catch(error){ready=false;onReady(api);onNotice("Could not load cloud data: "+error.message)}
   });
   return api;
