@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f8f7">
+<meta name="description" content="Alpha: intelligent revision for GCSE History and English. 408 cards, offline study, adaptive reviews.">
+<title>α Alpha — Knowledge that lasts</title>
+<link rel="stylesheet" href="./styles.css">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml">
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+  <a class="brand" href="#/dashboard" aria-label="Alpha home"><span class="brand-icon">α</span><span>Alpha<small>Knowledge that lasts.</small></span></a>
+  <div class="side-caption">WORKSPACE</div>
+  <nav aria-label="Main navigation">
+    <button data-route="dashboard" class="nav-link active"><span>▦</span> Overview</button>
+    <button data-route="library" class="nav-link"><span>▤</span> Your library</button>
+    <button data-route="review" class="nav-link"><span>◉</span> Review</button>
+    <button data-route="timeline" class="nav-link"><span>≡</span> Date atlas</button>
+    <button data-route="insights" class="nav-link"><span>⌁</span> Insights</button>
+  </nav>
+  <div class="side-caption">PREFERENCES</div>
+  <nav><button data-route="settings" class="nav-link"><span>⚙</span> Settings & backup</button></nav>
+  <div class="side-bottom"><div class="online-dot"></div><span id="saveStatus">Saved on this device</span></div>
+</aside>
+<div class="layout">
+<header class="topbar">
+ <div class="mobile-logo">↗ Alpha</div>
+ <div id="breadcrumbs">Workspace / Overview</div>
+ <div class="top-actions">
+ <span id="todayLabel"></span>
+ <button id="authButton" class="outline small">Enable cloud sync</button>
+ </div>
+</header>
+<main id="page" tabindex="-1"></main>
+<footer>Thoughtful practice, not endless cards. <span>Private by default · Open-format backups · Evidence-informed scheduling</span></footer>
+</div>
+</div>
+<input hidden type="file" accept="application/json,.json" id="importFile">
+<div id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="./app.js"></script>
+</body></html>
