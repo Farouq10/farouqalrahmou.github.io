@@ -1,0 +1,35 @@
+name: Publish Alpha to Cloudflare Pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - "alpha/**"
+      - ".github/workflows/deploy-alpha-cloudflare.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-alpha-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Alpha site
+        run: |
+          node --check alpha/app.js
+          node --check alpha/content-views.mjs
+          node --check alpha/daily.mjs
+          node --check alpha/problem-bank.js
+          test "$(find alpha/question-images -maxdepth 1 -name '*.webp' | wc -l)" -eq 90
+      - name: Publish to alpha-recall.pages.dev
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy alpha --project-name=alpha-recall --branch=main
